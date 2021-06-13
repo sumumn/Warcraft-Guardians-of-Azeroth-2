@@ -5,7 +5,7 @@
 	doctrine = life_hostility_doctrine
 
 	#Main Group
-	doctrine = doctrine_spiritual_head
+	doctrine = doctrine_no_head
 	doctrine = doctrine_gender_male_dominated
 	doctrine = doctrine_pluralism_righteous
 	doctrine = doctrine_theocracy_temporal
@@ -24,9 +24,23 @@
 	doctrine = doctrine_deviancy_crime
 	doctrine = doctrine_witchcraft_crime
 
+	#Magic
+	doctrine = doctrine_light_magic_ignored
+	doctrine = doctrine_shadow_magic_crime
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_ignored
+	doctrine = doctrine_life_magic_accepted
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_approved
+	doctrine = doctrine_elemental_decay_magic_crime
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_accepted
+	doctrine = doctrine_elemental_earth_magic_accepted
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
-	doctrine = doctrine_clerical_gender_male_only
+	doctrine = doctrine_clerical_gender_either
 	doctrine = doctrine_clerical_marriage_disallowed
 	doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
 
@@ -165,7 +179,8 @@
 		ReligiousSymbol = SERPENT_NAME
 		ReligiousText = SCRIPTURES_NAME
 		
-		ReligiousHeadName = HIGH_PRIEST_NAME
+		ReligiousHeadName = HIGH_PRIEST_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_PRIEST_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_PRIESTHOOD_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -214,7 +229,13 @@
 		august_celestials = {
 			#Main Group
 			color = rgb { 155 255 185 }
-			icon = custom_faith_1
+			icon = wcmw_august_celestials
+
+			holy_site = dawnblossom
+			holy_site = niuzao
+			holy_site = chi_ji
+			holy_site = yulon
+			holy_site = xuen
 
 			doctrine = tenet_dharmic_pacifism
 			doctrine = tenet_asceticism

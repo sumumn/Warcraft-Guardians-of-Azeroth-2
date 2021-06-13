@@ -24,6 +24,20 @@
 	doctrine = doctrine_deviancy_accepted
 	doctrine = doctrine_witchcraft_accepted
 
+	#Magic
+	doctrine = doctrine_light_magic_ignored
+	doctrine = doctrine_shadow_magic_accepted
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_ignored
+	doctrine = doctrine_life_magic_ignored
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_accepted
+	doctrine = doctrine_elemental_decay_magic_accepted
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_approved
+	doctrine = doctrine_elemental_earth_magic_shunned
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_recruitment
 	doctrine = doctrine_clerical_gender_either
@@ -161,7 +175,8 @@
 		ReligiousSymbol = HAMMER_NAME
 		ReligiousText = STORIES_NAME
 		
-		ReligiousHeadName = HIGH_SHAMAN_NAME
+		ReligiousHeadName = HIGH_SHAMAN_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_SHAMAN_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_CHURCH_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -210,7 +225,17 @@
 		alakir_worship = {
 			#Main Group
 			color = rgb { 125 125 125 }
-			icon = custom_faith_1
+			religious_head = d_alakir_worship
+			icon = wcmw_alakir_worship
+
+			holy_site = blackrock_depths
+			holy_site = balor
+			holy_site = kubitis
+			holy_site = nordrassil
+			holy_site = maraudon
+			
+			#Special hostility
+			doctrine = shathgral_hostility_doctrine
 
 			doctrine = tenet_human_sacrifice
 			doctrine = tenet_warmonger

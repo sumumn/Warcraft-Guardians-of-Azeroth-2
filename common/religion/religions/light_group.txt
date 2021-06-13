@@ -24,9 +24,23 @@
 	doctrine = doctrine_deviancy_crime
 	doctrine = doctrine_witchcraft_crime
 
+	#Magic
+	doctrine = doctrine_light_magic_approved
+	doctrine = doctrine_shadow_magic_crime
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_shunned
+	doctrine = doctrine_life_magic_ignored
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_shunned
+	doctrine = doctrine_elemental_decay_magic_shunned
+	doctrine = doctrine_elemental_fire_magic_ignored
+	doctrine = doctrine_elemental_water_magic_ignored
+	doctrine = doctrine_elemental_air_magic_ignored
+	doctrine = doctrine_elemental_earth_magic_ignored
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
-	doctrine = doctrine_clerical_gender_male_only
+	doctrine = doctrine_clerical_gender_either
 	doctrine = doctrine_clerical_marriage_disallowed
 	doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
 
@@ -167,7 +181,8 @@
 		ReligiousSymbol = CREST_NAME
 		ReligiousText = SCRIPTURES_NAME
 		
-		ReligiousHeadName = ARCHBISHOP_NAME
+		ReligiousHeadName = ARCHBISHOP_MALE_NAME
+		ReligiousHeadNameFemale = ARCHBISHOP_FEMALE_NAME
 		ReligiousHeadTitleName = ARCHBISHOPRIC_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -217,11 +232,13 @@
 			#Main Group
 			color = rgb { 255 255 200 }
 			religious_head = d_church_of_the_holy_light
-			icon = custom_faith_1
-			
-			holy_site = tyr's_hand
-			holy_site = stormwind
+			icon = wccc_holy_light
+
+			holy_site = tyrs_hand
+			holy_site = northshire
 			holy_site = stromgarde
+			holy_site = lordaeron
+			holy_site = ironforge
 
 			doctrine = tenet_eastern_kingdoms_syncretism
 			doctrine = tenet_communion
@@ -231,12 +248,14 @@
 		scarlet_light = {
 			#Main Group
 			color = rgb { 200 85 85 }
-			religious_head = d_church_of_the_scarlet_light
-			icon = custom_faith_1
+			religious_head = d_church_scarlet_light
+			icon = wccc_scarlet_light
 			
-			holy_site = tyr's_hand
+			holy_site = tyrs_hand
 			holy_site = lordaeron
 			holy_site = stromgarde
+			holy_site = stratholme
+			holy_site = hearthglen
 			
 			#Main Group
 			doctrine = doctrine_pluralism_fundamentalist
@@ -244,93 +263,81 @@
 			doctrine = tenet_communion
 			doctrine = tenet_armed_pilgrimages
 			doctrine = tenet_monasticism
-		}
 
-		naaru = {
-			#Main Group
-			color = rgb { 225 140 230 }
-			icon = custom_faith_1
-
-			doctrine = tenet_astrology
-			doctrine = tenet_pacifism
-			doctrine = tenet_adaptive
-			
 			localization = {
-				#HealthGod
-				HealthGodName = NAARU_NAME
-				HealthGodNamePossessive = NAARU_POSSESSIVE
-				HealthGodSheHe = CHARACTER_SHEHE_THEY
-				HealthGodHerHis = CHARACTER_HERHIS_THEIR
-				HealthGodHerHim = CHARACTER_HERHIM_THEM
-				
-				#FateGod
-				FateGodName = NAARU_NAME
-				FateGodNamePossessive = NAARU_POSSESSIVE
-				FateGodSheHe = CHARACTER_SHEHE_THEY
-				FateGodHerHis = CHARACTER_HERHIS_THEIR
-				FateGodHerHim = CHARACTER_HERHIM_THEM
-				
-				#KnowledgeGod
-				KnowledgeGodName = NAARU_NAME
-				KnowledgeGodNamePossessive = NAARU_POSSESSIVE
-				KnowledgeGodSheHe = CHARACTER_SHEHE_THEY
-				KnowledgeGodHerHis = CHARACTER_HERHIS_THEIR
-				KnowledgeGodHerHim = CHARACTER_HERHIM_THEM
-				
-				GoodGodNames = {
-					LIGHT_NAME
-					HOLY_LIGHT_NAME
-					NAARU_NAME
-				}
+				#Head
+				ReligiousHeadName = HIGH_INQUISITOR_MALE_NAME
+				ReligiousHeadNameFemale = HIGH_INQUISITOR_FEMALE_NAME
 			}
 		}
-
-		lightbound = {
+		#Dwarven light religion
+		khazism = {
 			#Main Group
-			color = rgb { 255 200 100 }
-			icon = custom_faith_1
-			
-			#Main Group
-			doctrine = doctrine_pluralism_fundamentalist
+			color = rgb { 255 200 150 }
+			icon = wcbb_khazism
 
+			holy_site = ironforge
+			holy_site = blackrock_depths
+			holy_site = red_desert
+			holy_site = grim_batol
+			holy_site = gnomeregan
+
+			#Main Group
+			doctrine = doctrine_no_head
+			doctrine = doctrine_pluralism_pluralistic
+			doctrine = doctrine_theocracy_lay_clergy
+
+			#Magic
+			doctrine = doctrine_order_magic_accepted
+			doctrine = doctrine_elemental_spirit_magic_accepted
+			doctrine = doctrine_elemental_water_magic_accepted
+			doctrine = doctrine_elemental_air_magic_accepted
+			doctrine = doctrine_elemental_earth_magic_accepted
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			doctrine = tenet_eastern_kingdoms_syncretism
+			doctrine = tenet_monasticism
+			doctrine = tenet_order_syncretism
+		}
+		#Light/Arcane religion
+		kirin_tor = { #Blend between base light religion and arcane religion
+			#Main Group
+			color = rgb { 255 190 230 } #Color is based on holy light with a pinkish tint
+			religious_head = d_kirin_tor #King of Dalaran should be head of faith
+			icon = wcmw_arcane_religion #Placeholder
+
+			holy_site = tyrs_hand #The most important light holy sites in Lordaeron
+			holy_site = lordaeron
+			holy_site = karazhan #The arcane holy sites that makes sense for Dalaran to "venerate"
+			holy_site = coldarra 
+			holy_site = dalaran
+
+			#Main Group
+			doctrine = doctrine_temporal_head #Head of faith should be inherited to next archmage
+			doctrine = doctrine_gender_equal #Dalaran is clearly equal
+			doctrine = doctrine_pluralism_pluralistic
+			doctrine = doctrine_theocracy_lay_clergy
+
+			#Magic 
+			#Same magic doctrines as arcane
+			doctrine = doctrine_light_magic_accepted #This is a light religion. 'nough said.
+			doctrine = doctrine_order_magic_approved
+			doctrine = doctrine_elemental_fire_magic_accepted
+			doctrine = doctrine_elemental_water_magic_accepted
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+			doctrine = tenet_eastern_kingdoms_syncretism
 			doctrine = tenet_astrology
-			doctrine = tenet_armed_pilgrimages
-			doctrine = tenet_unrelenting_faith
-			
+			doctrine = tenet_order_syncretism
+
 			localization = {
-				#HealthGod
-				HealthGodName = NAARU_NAME
-				HealthGodNamePossessive = NAARU_POSSESSIVE
-				HealthGodSheHe = CHARACTER_SHEHE_THEY
-				HealthGodHerHis = CHARACTER_HERHIS_THEIR
-				HealthGodHerHim = CHARACTER_HERHIM_THEM
-				
-				#FateGod
-				FateGodName = NAARU_NAME
-				FateGodNamePossessive = NAARU_POSSESSIVE
-				FateGodSheHe = CHARACTER_SHEHE_THEY
-				FateGodHerHis = CHARACTER_HERHIS_THEIR
-				FateGodHerHim = CHARACTER_HERHIM_THEM
-				
-				#KnowledgeGod
-				KnowledgeGodName = NAARU_NAME
-				KnowledgeGodNamePossessive = NAARU_POSSESSIVE
-				KnowledgeGodSheHe = CHARACTER_SHEHE_THEY
-				KnowledgeGodHerHis = CHARACTER_HERHIS_THEIR
-				KnowledgeGodHerHim = CHARACTER_HERHIM_THEM
-				
-				#WarGod
-				WarGodName = NAARU_NAME
-				WarGodNamePossessive = NAARU_POSSESSIVE
-				WarGodSheHe = CHARACTER_SHEHE_THEY
-				WarGodHerHis = CHARACTER_HERHIS_THEIR
-				WarGodHerHim = CHARACTER_HERHIM_THEM
-				
-				GoodGodNames = {
-					LIGHT_NAME
-					HOLY_LIGHT_NAME
-					NAARU_NAME
-				}
+				#Head
+				ReligiousHeadName = ARCHMAGE_MALE_NAME
+				ReligiousHeadNameFemale = ARCHMAGE_FEMALE_NAME
 			}
 		}
 	}

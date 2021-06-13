@@ -24,6 +24,20 @@
 	doctrine = doctrine_deviancy_shunned
 	doctrine = doctrine_witchcraft_shunned
 
+	#Magic
+	doctrine = doctrine_light_magic_ignored
+	doctrine = doctrine_shadow_magic_crime
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_ignored
+	doctrine = doctrine_life_magic_accepted
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_approved
+	doctrine = doctrine_elemental_decay_magic_accepted
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_accepted
+	doctrine = doctrine_elemental_earth_magic_accepted
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_recruitment
 	doctrine = doctrine_clerical_gender_male_only
@@ -32,16 +46,8 @@
 
 	# Placeholder
 	traits = {
-		virtues = {
-			ambitious
-			brave
-			diligent
-		}
-		sins = {
-			content
-			craven
-			lazy
-		}
+		virtues = { ambitious brave diligent }
+		sins = { content craven lazy }
 	}
 
 	# Placeholder
@@ -168,7 +174,8 @@
 		ReligiousSymbol = TOTEM_NAME
 		ReligiousText = STORIES_NAME
 		
-		ReligiousHeadName = HIGH_SHAMAN_NAME
+		ReligiousHeadName = HIGH_SHAMAN_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_SHAMAN_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_CHURCH_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -218,10 +225,19 @@
 		saurok_religion = {
 			#Main Group
 			color = rgb { 255 124 128 }
-			icon = germanic
-			reformed_icon = germanic_reformed
+			icon = wcmw_saurok_religion
+			reformed_icon = wcmw_saurok_religion
 			
 			doctrine = unreformed_faith_doctrine
+			
+			holy_site = ihgaluk
+			holy_site = nalaksha
+			holy_site = thok
+			holy_site = salyin
+			holy_site = zanchul
+			
+			#Main Group
+			doctrine = doctrine_no_head
 
 			doctrine = tenet_cult_of_strength
 			doctrine = tenet_ritual_cannibalism

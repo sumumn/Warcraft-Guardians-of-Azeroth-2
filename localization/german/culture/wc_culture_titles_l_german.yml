@@ -1,0 +1,29 @@
+﻿l_german:
+
+####################################################
+#Spezielle Titel
+ high_priest_kaldorei_male:0 "$HIGH_PRIEST_MALE_NAME$"
+ high_priestess_kaldorei_female:0 "$HIGH_PRIEST_FEMALE_NAME$"
+ 
+ warchief_male:0 "Kriegshäuptling"
+ warchief_female:0 "Kriegshäuptling"
+ warlord_male:0 "Kriegsfürst"
+ warlord_female:0 "Kriegsfürstin"
+ high_overlord_male:0 "Hoher Oberherr"
+ high_overlord_female:0 "Hohe Oberherrin"
+ overlord_male:0 "Oberherr"
+ overlord_female:0 "Oberherrin"
+
+ king_nightborne_male:0 "König"
+ queen_nightborne_female:0 "Königin"
+
+ grand_prince_nightborne_male:0 "Großfürst"
+ grand_princess_nightborne_female:0 "Großfürstin"
+ grand_principality_nightborne:0 "Großfürstentum"
+
+ prince_nightborne_male:0 "Prinz"
+ princess_nightborne_female:0 "Prinzessin"
+ principality_nightborne:0 "Fürstentum"
+
+ lord_nightborne_male:0 "Herr"
+ lady_nightborne_female:0 "Herrin" 

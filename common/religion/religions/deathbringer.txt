@@ -8,7 +8,7 @@
 	doctrine = doctrine_temporal_head
 	doctrine = doctrine_gender_equal
 	doctrine = doctrine_pluralism_fundamentalist
-	doctrine = doctrine_theocracy_temporal
+	doctrine = doctrine_theocracy_lay_clergy
 
 	#Marriage
 	doctrine = doctrine_monogamy
@@ -24,6 +24,20 @@
 	doctrine = doctrine_deviancy_accepted
 	doctrine = doctrine_witchcraft_accepted
 
+	#Magic
+	doctrine = doctrine_light_magic_crime
+	doctrine = doctrine_shadow_magic_accepted
+	doctrine = doctrine_disorder_magic_ignored
+	doctrine = doctrine_order_magic_ignored
+	doctrine = doctrine_life_magic_crime
+	doctrine = doctrine_death_magic_approved
+	doctrine = doctrine_elemental_spirit_magic_shunned
+	doctrine = doctrine_elemental_decay_magic_accepted
+	doctrine = doctrine_elemental_fire_magic_ignored
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_ignored
+	doctrine = doctrine_elemental_earth_magic_ignored
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_alms_and_pacification
 	doctrine = doctrine_clerical_gender_either
@@ -31,7 +45,7 @@
 	doctrine = doctrine_clerical_succession_temporal_appointment
 	
 	#Special
-	doctrine = special_doctrine_all_means_to_end
+	doctrine = special_doctrine_end_justifies_means
 
 	# Placeholder
 	traits = {
@@ -163,7 +177,8 @@
 		ReligiousSymbol = SKULL_NAME
 		ReligiousText = SCRIPTURES_NAME
 		
-		ReligiousHeadName = HIGH_PRIEST_NAME
+		ReligiousHeadName = HIGH_PRIEST_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_PRIEST_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_PRIESTHOOD_NAME
 		
 		DevoteeMale = PRIEST_NAME
@@ -212,7 +227,14 @@
 		death_god = {
 			#Main Group
 			color = rgb { 95 75 100 }
-			icon = custom_faith_1
+			religious_head = d_death_god
+			icon = wccc_death_god
+
+			holy_site = icecrown
+			holy_site = draktharon
+			holy_site = lordaeron
+			holy_site = sunwell_plateau
+			holy_site = dalaran
 
 			doctrine = tenet_ritual_cannibalism
 			doctrine = tenet_sacred_shadows

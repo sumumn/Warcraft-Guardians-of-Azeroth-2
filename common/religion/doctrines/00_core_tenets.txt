@@ -8,26 +8,14 @@
 
 	tenet_aniconism = {
 		icon = core_tenet_altar
-		
-		#Warcraft
-		name = {
-			first_valid = {
-				desc = tenet_aniconism_name_neutral
-			}
-		}
-		desc = {
-			first_valid = {
-				desc = tenet_aniconism_desc_neutral
-			}
-		}
-		
 		piety_cost = {
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = judaism_religion
-						religion_tag = islam_religion
+						like_judaism_religion_trigger = yes
+						like_islam_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -44,7 +32,8 @@
 		}
 
 		is_shown = {
-			#has_doctrine = abrahamic_hostility_doctrine
+			# Warcraft
+			#like_abrahamic_religion_trigger = yes
 		}
 
 		can_pick = {
@@ -61,19 +50,6 @@
 
 	tenet_alexandrian_catechism = {
 		icon = core_tenet_bigbook
-		
-		#Warcraft
-		name = {
-			first_valid = {
-				desc = tenet_alexandrian_catechism_name_neutral
-			}
-		}
-		desc = {
-			first_valid = {
-				desc = tenet_alexandrian_catechism_desc_neutral
-			}
-		}
-		
 		piety_cost = {
 			value = faith_tenet_cost_mid
 
@@ -85,6 +61,7 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			#tenet_progressivism_allowed_trigger = no
 		}
 
@@ -104,7 +81,9 @@
 		icon = core_tenet_sword
 		piety_cost = {
 			if = {
+				# Warcraft
 				limit = { like_christianity_religion_trigger = yes }
+
 				value = faith_tenet_cost_low
 			}
 			else = {
@@ -120,8 +99,9 @@
 
 		is_shown = {
 			OR = {
+				# Warcraft
 				like_christianity_religion_trigger = yes
-				religion_tag = judaism_religion
+				like_judaism_religion_trigger = yes
 			}
 		}
 
@@ -149,15 +129,17 @@
 		piety_cost = {
 			if = {
 				limit = {
-					religion_tag = hinduism_religion
+					# Warcraft
+					like_hinduism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_low
 			}
 			else_if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = judaism_religion
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -165,8 +147,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_massive
@@ -198,8 +181,9 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_mid
@@ -234,6 +218,7 @@
 	tenet_communion = {
 		icon = core_tenet_chalice
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -242,15 +227,17 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = judaism_religion
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
 			}
 			else_if = {
 				limit = {
-					has_doctrine = pagan_hostility_doctrine
+					# Warcraft
+					like_pagan_religion_trigger = yes
 				}
 				value = faith_tenet_cost_high
 			}
@@ -291,6 +278,7 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
 					}
 					desc = tenet_consolamentum_name
@@ -303,9 +291,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = dualism_religion
-						religion_tag = hinduism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_dualism_religion_trigger = yes
+						like_hinduism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -322,15 +311,7 @@
 		}
 
 		is_shown = {
-			NOR = {
-				religion_tag = islam_religion
-				religion_tag = judaism_religion
-				religion_tag = zoroastrianism_religion
-				AND = {
-					has_doctrine = pagan_hostility_doctrine
-					NOT = { religion_tag = kushitism_religion }
-				}
-			}
+			# Warcraft
 		}
 
 		parameters = {
@@ -348,10 +329,11 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						religion_tag = dualism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_dualism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -381,68 +363,13 @@
 		}
 	}
 
-	# tenet_gnosticism = {
-		# icon = core_tenet_gnostic
-		# piety_cost = {
-			# if = {
-				# limit = {
-					# OR = {
-						# religion_tag = dualism_religion
-						# religion_tag = zoroastrianism_religion
-					# }
-				# }
-				# value = faith_tenet_cost_low
-			# }
-			# else_if = {
-				# limit = {
-					# OR = {
-						# religion_tag = judaism_religion
-						# religion_tag = islam_religion
-						# religion_tag = hinduism_religion
-						# has_doctrine = pagan_hostility_doctrine
-					# }
-				# }
-				# value = faith_tenet_cost_high
-			# }
-			# else = {
-				# value = faith_tenet_cost_mid
-			# }
-
-			# # Multiplier for keeping same tenet
-			# if = {
-				# limit = { has_doctrine = tenet_gnosticism }
-				# multiply = faith_unchanged_doctrine_cost_mult
-			# }
-		# }
-
-		# traits = {
-			# virtues = { temperate }
-			# sins = { gluttonous }
-		# }
-
-		# can_pick = {
-			# custom_description = {
-				# text = incompatible_tenet_eastern_syncretism_trigger
-				# NOT = {
-					# flag:tenet_eastern_syncretism = { is_in_list = selected_doctrines }
-				# }
-			# }
-		# }
-
-		# parameters = {
-			# hostility_override_tenet_gnosticism = 0
-			# granting_titles_gives_stress = yes
-		# }
-
-		# character_modifier = {
-			# learning = 2
-			# stewardship = -2
-		# }
-	# }
+	# Warcraft
+	# tenet_gnosticism
 
 	tenet_mendicant_preachers = {
 		icon = core_tenet_missionary
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -451,10 +378,11 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = dualism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						like_dualism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -462,9 +390,10 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = hinduism_religion
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_hinduism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -503,10 +432,11 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = dualism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						like_dualism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -514,8 +444,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -552,14 +483,16 @@
 		piety_cost = {
 			if = {
 				limit = {
+					# Warcraft
 					like_christianity_religion_trigger = yes
-					religion_tag = taoism_religion
+					like_taoism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_low
 			}
 			else_if = {
 				limit = {
-					religion_tag = islam_religion
+					# Warcraft
+					like_islam_religion_trigger = yes
 				}
 				value = faith_tenet_cost_high
 			}
@@ -575,6 +508,7 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			evil_public_religion_trigger = no
 			tenet_dharmic_pacifism_allowed_trigger = no
 		}
@@ -587,6 +521,12 @@
 			custom_description = {
 				text = incompatible_tenet_armed_pilgrimages_trigger
 				NOT = { flag:tenet_armed_pilgrimages = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gruesome_festivals_trigger
+				NOT = {
+					flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
+				}
 			}
 		}
 
@@ -615,6 +555,7 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
 					}
 					desc = tenet_pentarchy_alternate_name
@@ -627,9 +568,10 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = hinduism_religion
-						religion_tag = zoroastrianism_religion
+						like_hinduism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_mid
@@ -664,9 +606,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = judaism_religion
-						religion_tag = islam_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_judaism_religion_trigger = yes
+						like_islam_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -674,8 +617,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -704,6 +648,7 @@
 	tenet_vows_of_poverty = {
 		icon = core_tenet_meditation
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -712,10 +657,11 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = dualism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						like_dualism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -723,8 +669,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -758,6 +705,7 @@
 		icon = core_tenet_holytree
 
 		is_shown = {
+			# Warcraft
 			#TODO Adapt later
 			always = no
 			#like_christianity_religion_trigger = yes
@@ -780,9 +728,14 @@
 		}
 
 		parameters = {
-			hostility_override_special_doctrine_is_christian_faith = 0
+			# Warcraft
+			# hostility_override_special_doctrine_is_christian_faith = 0
+			
 			#For loc:
-			is_christian_faith_pastoral_isolation_loc_override = 0
+			
+			# Warcraft
+			# is_christian_faith_pastoral_isolation_loc_override = 0
+			
 			sanctioned_false_conversion = yes
 			unattractive_for_character_conversions = yes
 		}
@@ -807,8 +760,9 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = islam_religion
+						like_islam_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -816,10 +770,11 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = judaism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_judaism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -863,6 +818,7 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
 					}
 				}
@@ -871,10 +827,11 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = hinduism_religion
-						religion_tag = jainism_religion
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_hinduism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -908,9 +865,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -918,9 +876,10 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						religion_tag = judaism_religion
-						religion_tag = zoroastrianism_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_judaism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -956,8 +915,9 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						religion_tag = judaism_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -974,6 +934,7 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			tenet_progressivism_allowed_trigger = no
 		}
 
@@ -995,19 +956,21 @@
 		piety_cost = {
 			if = {
 				limit = {
-					OR = {
-						religion_tag = islam_religion
-					}
+					# Warcraft
+					# OR = {
+						like_islam_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_high
 			}
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = dualism_religion
-						religion_tag = hinduism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_dualism_religion_trigger = yes
+						like_hinduism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1025,9 +988,10 @@
 
 		is_shown = {
 			NOR = {
+				# Warcraft
 				like_christianity_religion_trigger = yes
-				religion_tag = judaism_religion
-				religion_tag = zoroastrianism_religion
+				like_judaism_religion_trigger = yes
+				like_zoroastrianism_religion_trigger = yes
 			}
 		}
 
@@ -1043,10 +1007,11 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft				
 						like_christianity_religion_trigger = yes
-						religion_tag = hinduism_religion
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						like_hinduism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -1054,8 +1019,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						religion_tag = judaism_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1075,13 +1041,15 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						religion_tag = islam_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
 					}
 					desc = tenet_religious_legal_pronouncements_fatwa
 				}
 				triggered_desc = {
 					trigger = {
-						religion_tag = judaism_religion
+						# Warcraft
+						like_judaism_religion_trigger = yes
 					}
 					desc = tenet_religious_legal_pronouncements_halakha
 				}
@@ -1100,7 +1068,8 @@
 		piety_cost = {
 			if = {
 				limit = {
-					religion_tag = islam_religion
+					# Warcraft
+					like_islam_religion_trigger = yes
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1117,8 +1086,9 @@
 
 		is_shown = {
 			OR = {
-				religion_tag = islam_religion
-				religion_tag = dualism_religion
+				# Warcraft
+				like_islam_religion_trigger = yes
+				like_dualism_religion_trigger = yes
 			}
 		}
 
@@ -1136,7 +1106,8 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						religion_tag = islam_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
 					}
 					desc = tenet_temporal_condemnation_taqiya
 				}
@@ -1148,19 +1119,21 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = dualism_religion
-						religion_tag = hinduism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_dualism_religion_trigger = yes
+						like_hinduism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
 			}
 			else_if = {
 				limit = {
-					OR = {
-						religion_tag = zoroastrianism_religion
-					}
+					# Warcraft
+					# OR = {
+						like_zoroastrianism_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1176,7 +1149,10 @@
 		}
 
 		is_shown = {
+
+			# Warcraft
 			NOT = { like_christianity_religion_trigger = yes }
+
 		}
 
 		parameters = {
@@ -1190,8 +1166,9 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = dualism_religion
+						like_dualism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -1199,8 +1176,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1220,7 +1198,8 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						religion_tag = islam_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
 					}
 					desc = tenet_tax_nonbelievers_jizya_name
 				}
@@ -1242,6 +1221,7 @@
 	tenet_asceticism = {
 		icon = core_tenet_meditation
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -1250,8 +1230,9 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -1259,11 +1240,12 @@
 			else_if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = dualism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
-						religion_tag = taoism_religion
+						like_dualism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
+						like_taoism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1279,7 +1261,6 @@
 			}
 		}
 		
-
 		parameters = {
 			meditation_mechanics_active = yes
 		}
@@ -1297,12 +1278,24 @@
 	}
 
 	tenet_bhakti = {
+		name = {
+			first_valid = {
+				triggered_desc = {
+					# Warcraft
+					trigger = { like_hinduism_religion_trigger = yes }
+					
+					desc = tenet_bhakti_name
+				}
+				desc = tenet_bhakti_patron_god_name
+			}
+		}
 		icon = core_tenet_bhakti
 
 		piety_cost = faith_tenet_cost_mid
 
 		is_shown = {
-			religion_tag = hinduism_religion
+			# Warcraft
+			like_hinduism_religion_trigger = yes
 		}
 
 		parameters = {
@@ -1312,14 +1305,8 @@
 
 	tenet_dharmic_pacifism = { #Mix of reincarnation and pacifism rites
 		icon = core_tenet_dharmawheel
-		
-		name = {
-			first_valid = {
-				desc = tenet_dharmic_pacifism_name_neutral
-			}
-		}
-		
 		is_shown = {
+			# Warcraft
 			evil_public_religion_trigger = no
 			tenet_dharmic_pacifism_allowed_trigger = yes
 		}
@@ -1328,8 +1315,9 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1353,6 +1341,12 @@
 			custom_description = {
 				text = incompatible_tenet_armed_pilgrimages_trigger
 				NOT = { flag:tenet_armed_pilgrimages = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gruesome_festivals_trigger
+				NOT = {
+					flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
+				}
 			}
 		}
 		
@@ -1379,8 +1373,10 @@
 		icon = core_tenet_meditation
 
 		is_shown = {
+
+			# Warcraft
 			like_eastern_religion_trigger = yes
-			NOT = { religion_tag = zoroastrianism_religion }
+			NOT = { like_zoroastrianism_religion_trigger = yes }
 		}
 
 		piety_cost = {
@@ -1409,9 +1405,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = hinduism_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						# Warcraft
+						like_hinduism_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1428,9 +1425,10 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			evil_public_religion_trigger = no
 			# NOT = {
-				# has_doctrine = abrahamic_hostility_doctrine
+				# like_abrahamic_religion_trigger = yes
 			# }
 		}
 
@@ -1438,7 +1436,8 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						religion_tag = hinduism_religion
+						# Warcraft
+						like_hinduism_religion_trigger = yes
 					}
 					desc = tenet_ritual_hospitality_alternate_name
 				}
@@ -1482,7 +1481,8 @@
 		}
 
 		is_shown = {
-			religion_tag = west_african_bori_religion
+			# Warcraft
+			like_west_african_bori_religion_trigger = yes
 		}
 
 		parameters = {
@@ -1508,7 +1508,7 @@
 		}
 
 		is_shown = {
-			has_doctrine = pagan_hostility_doctrine
+			tenet_ancestor_worship_allowed_trigger = yes
 		}
 
 		parameters = {
@@ -1530,9 +1530,10 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = judaism_religion
-						religion_tag = islam_religion
+						like_judaism_religion_trigger = yes
+						like_islam_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -1540,8 +1541,9 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1555,6 +1557,11 @@
 				limit = { has_doctrine = tenet_astrology }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
+		}
+		
+		# Warcraft
+		is_shown = {
+			tenet_moon_worship_allowed_trigger = no
 		}
 
 		parameters = {
@@ -1572,9 +1579,10 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_massive
@@ -1582,17 +1590,19 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = islam_religion
-						religion_tag = judaism_religion
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
 			}
 			else_if = {
 				limit = {
-					OR = {
-						religion_tag = hinduism_religion
-					}
+					# Warcraft
+					# OR = {
+						like_hinduism_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_low
 			}
@@ -1608,7 +1618,8 @@
 		}
 
 		is_shown = {
-			NOT = { religion_tag = dualism_religion }
+			# Warcraft
+			NOT = { like_dualism_religion_trigger = yes }
 		}
 
 		can_pick = {
@@ -1641,13 +1652,15 @@
 		piety_cost = {
 			if = {
 				limit = {
-					has_doctrine = pagan_hostility_doctrine
+					# Warcraft
+					like_pagan_religion_trigger = yes
 				}
 				value = faith_tenet_cost_mid
 			}
 			else_if = {
 				limit = {
-					religion_tag = hinduism_religion
+					# Warcraft
+					like_hinduism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_high
 			}
@@ -1657,18 +1670,17 @@
 
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine_tenet_human_sacrifice_trigger = yes }
+				limit = { has_doctrine = tenet_human_sacrifice }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
 
 		is_shown = {
-			has_doctrine_tenet_human_sacrifice_trigger = no
-			NOR = {
-				like_christianity_religion_trigger = yes
-				religion_tag = judaism_religion
-				religion_tag = islam_religion
-			}
+			# Warcraft
+			evil_public_religion_trigger = no	#They have it by default
+
+			# No HumSac for Abrahamics: 'tis literally the religion-namer.
+			like_abrahamic_religion_trigger = no
 		}
 
 		can_pick = {
@@ -1679,6 +1691,12 @@
 			custom_description = {
 				text = incompatible_tenet_dharmic_pacifism_trigger
 				NOT = { flag:tenet_dharmic_pacifism = { is_in_list = selected_doctrines } }
+			}
+			custom_description = {
+				text = incompatible_tenet_gruesome_festivals_trigger
+				NOT = {
+					flag:tenet_gruesome_festivals = { is_in_list = selected_doctrines }
+				}
 			}
 		}
 
@@ -1702,6 +1720,7 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			#TODO Adapt later
 			always = no
 			#religion_tag = magyar_religion
@@ -1719,6 +1738,7 @@
 	tenet_ritual_celebrations = {
 		icon = core_tenet_festivities
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -1727,9 +1747,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = hinduism_religion
-						religion_tag = zoroastrianism_religion
-						has_doctrine = pagan_hostility_doctrine
+						# Warcraft
+						like_hinduism_religion_trigger = yes
+						like_zoroastrianism_religion_trigger = yes
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_low
@@ -1762,7 +1783,8 @@
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						religion_tag = baltic_religion
+						# Warcraft
+						like_baltic_religion_trigger = yes
 					}
 					desc = tenet_sacred_childbirth_alternate_name
 				}
@@ -1781,8 +1803,9 @@
 		}
 
 		is_shown = {
+			# Warcraft
 			# OR = {
-				# religion_tag = baltic_religion
+				# like_baltic_religion_trigger = yes
 				# religion_tag = waaqism_religion
 			# }
 		}
@@ -1800,6 +1823,7 @@
 	tenet_sanctity_of_nature = {
 		icon = core_tenet_holytree
 		
+		# Warcraft
 		is_shown = {
 			evil_public_religion_trigger = no
 		}
@@ -1808,22 +1832,25 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = hinduism_religion
+						# Warcraft
+						like_hinduism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
 			}
 			else_if = {
 				limit = {
-					OR = {
-						has_doctrine = pagan_hostility_doctrine
-					}
+					# Warcraft
+					# OR = {
+						like_pagan_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_low
 			}
 			else_if = {
 				limit = {
-					has_doctrine = abrahamic_hostility_doctrine
+					# Warcraft
+					like_abrahamic_religion_trigger = yes
 				}
 				value = faith_tenet_cost_massive
 			}
@@ -1864,8 +1891,9 @@
 		}
 
 		is_shown = {
-			NOT = {
-				religion = {
+			# Warcraft
+			religion = {
+				NOT = {
 					is_in_family = rf_shadow
 					is_in_family = rf_life
 				}
@@ -1881,11 +1909,11 @@
 		}
 	}
 
-	tenet_sun_worship = {
+	tenet_sun_worship = { # Warcraft - Includes tenet_light_syncretism
 		icon = core_tenet_skyshaman
 
 		piety_cost = {
-			value = faith_tenet_cost_mid
+			value = faith_tenet_cost_high
 
 			# Multiplier for keeping same tenet
 			if = {
@@ -1895,20 +1923,33 @@
 		}
 
 		is_shown = {
-			religion_tag = zunism_religion
+
+			# Warcraft
+			evil_public_religion_trigger = no
+			
+			tenet_sun_worship_allowed_trigger = yes
+
+		}
+
+		# Warcraft
+		can_pick = {
+			incompatible_tenet_light_magic_not_accepted_trigger = yes
 		}
 
 		parameters = {
 			summer_festivals_active = yes
 			trial_by_sun_active = yes
+			
+			# Warcraft - tenet_light_syncretism
+			light_syncretism_active = yes
+			hostility_override_light_hostility_doctrine = 1
+
 		}
 
 		character_modifier = {
 			desert_attrition_mult = -0.25
 			desert_mountains_attrition_mult = -0.25
 		}
-
-		piety_cost = faith_tenet_cost_mid
 	}
 
 	tenet_warmonger = {
@@ -1917,9 +1958,10 @@
 			if = {
 				limit = {
 					OR = {
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
-						religion_tag = taoism_religion
+						# Warcraft
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
+						like_taoism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_massive
@@ -1930,18 +1972,21 @@
 
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine_tenet_warmonger_trigger = yes }
+				limit = { has_doctrine = tenet_warmonger }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
 
 		is_shown = {
-			has_doctrine_tenet_warmonger_trigger = no
+			# Warcraft
+			evil_public_religion_trigger = no	#They have it by default
+
 			NOR = {
+				# Warcraft
 				like_christianity_religion_trigger = yes
-				religion_tag = islam_religion
-				religion_tag = judaism_religion
-				religion_tag = dualism_religion
+				like_islam_religion_trigger = yes
+				like_judaism_religion_trigger = yes
+				like_dualism_religion_trigger = yes
 			}
 		}
 
@@ -1970,6 +2015,89 @@
 		}
 	}
 
+	tenet_gruesome_festivals = {
+		name = {
+			first_valid = {
+				triggered_desc = {
+					trigger = { like_germanic_religion_trigger = yes }
+					desc = tenet_gruesome_festivals_blot_name
+				}
+				desc = tenet_gruesome_festivals_name
+			}
+		}
+
+		icon = core_tenet_blood_bowl
+
+		piety_cost = {
+			# If you've already got human sacrifice, this is a nice and easy jump.
+			if = {
+				limit = { has_doctrine = tenet_human_sacrifice }
+				value = faith_tenet_cost_low
+			}
+			# Otherwise, follow the same pricing tiers as tenet_human_sacrifice.
+			else_if = {
+				limit = {
+					# Warcraft
+					like_pagan_religion_trigger = yes
+				}
+				value = faith_tenet_cost_mid
+			}
+			else_if = {
+				limit = {
+					# Warcraft
+					like_hinduism_religion_trigger = yes
+				}
+				value = faith_tenet_cost_high
+			}
+			else = {
+				value = faith_tenet_cost_massive
+			}
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_gruesome_festivals }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		is_shown = {
+			# Warcraft
+			evil_public_religion_trigger = no	#They have it by default
+
+			# No HumSac for Abrahamics: 'tis literally the religion-namer.
+			like_abrahamic_religion_trigger = no
+
+			# And DLC required.
+			has_fp1_dlc_trigger = yes
+		}
+
+		can_pick = {
+			custom_description = {
+				text = incompatible_tenet_pacifism_trigger
+				NOT = {
+					flag:tenet_pacifism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_description = {
+				text = incompatible_tenet_dharmic_pacifism_trigger
+				NOT = {
+					flag:tenet_dharmic_pacifism = { is_in_list = selected_doctrines }
+				}
+			}
+			custom_description = {
+				text = incompatible_tenet_human_sacrifice_trigger
+				NOT = {
+					flag:tenet_human_sacrifice = { is_in_list = selected_doctrines }
+				}
+			}
+		}
+
+		parameters = {
+			human_sacrifice_active = yes
+			gruesome_festivals_active = yes
+		}
+	}
+
 	#############################
 	# Syncretic Faith Tenets	#
 	#############################
@@ -1978,12 +2106,11 @@
 		icon = core_tenet_missionary
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_dark_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2011,9 +2138,22 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_death_magic_not_accepted_trigger = yes
+			incompatible_tenet_elemental_decay_magic_not_accepted_trigger = yes
+
 		}
+		
 
 		parameters = {
+			death_syncretism_active = yes
 			hostility_override_death_hostility_doctrine = 1
 		}
 
@@ -2026,12 +2166,11 @@
 		icon = core_tenet_bhakti
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_dark_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2059,9 +2198,20 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_disorder_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			disorder_syncretism_active = yes
 			hostility_override_disorder_hostility_doctrine = 1
 		}
 
@@ -2074,12 +2224,11 @@
 		icon = core_tenet_runestone
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_bright_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2107,9 +2256,23 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_elemental_fire_magic_not_accepted_trigger = yes
+			incompatible_tenet_elemental_water_magic_not_accepted_trigger = yes
+			incompatible_tenet_elemental_air_magic_not_accepted_trigger = yes
+			incompatible_tenet_elemental_earth_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			elemental_syncretism_active = yes
 			hostility_override_elemental_hostility_doctrine = 1
 		}
 
@@ -2122,12 +2285,11 @@
 		icon = core_tenet_marriage
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_bright_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2155,9 +2317,21 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_life_magic_not_accepted_trigger = yes
+			incompatible_tenet_elemental_spirit_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			life_syncretism_active = yes
 			hostility_override_life_hostility_doctrine = 1
 		}
 
@@ -2170,12 +2344,11 @@
 		icon = core_tenet_prayer
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_bright_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2187,7 +2360,10 @@
 
 		is_shown = {
 			evil_public_religion_trigger = no
+			
 			NOT = { has_doctrine = light_hostility_doctrine }
+			tenet_sun_worship_allowed_trigger = no
+			tenet_moon_worship_allowed_trigger = no
 		}
 		can_pick = {
 			custom_description = {
@@ -2200,12 +2376,23 @@
 					#flag:tenet_light_syncretism = { is_in_list = selected_doctrines }
 					flag:tenet_order_syncretism = { is_in_list = selected_doctrines }
 					flag:tenet_shadow_syncretism = { is_in_list = selected_doctrines }
-					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
+					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }			
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_light_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			light_syncretism_active = yes
 			hostility_override_light_hostility_doctrine = 1
 		}
 
@@ -2218,12 +2405,11 @@
 		icon = core_tenet_bigbook
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_bright_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2251,9 +2437,20 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_order_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			order_syncretism_active = yes
 			hostility_override_order_hostility_doctrine = 1
 		}
 
@@ -2266,12 +2463,11 @@
 		icon = core_tenet_adorcism
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_dark_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2299,9 +2495,20 @@
 					flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
+
+			# Warcraft
+			incompatible_tenet_shadow_magic_not_accepted_trigger = yes
+
 		}
 
 		parameters = {
+			shadow_syncretism_active = yes
 			hostility_override_shadow_hostility_doctrine = 1
 		}
 
@@ -2315,12 +2522,11 @@
 		icon = core_tenet_followers
 
 		piety_cost = {
+			value = faith_tenet_cost_low
+
 			if = {
 				limit = { religion = { is_in_bright_religion_family_trigger = yes } }
-				value = faith_tenet_cost_low
-			}
-			else = {
-				value = faith_tenet_cost_mid
+				multiply = wc_religious_family_syncretism_tenet_cost_discount_value
 			}
 
 			# Multiplier for keeping same tenet
@@ -2332,7 +2538,7 @@
 
 		is_shown = {
 			evil_public_religion_trigger = no
-			eastern_kingdoms_faith_trigger = yes
+			eastern_kingdoms_religion_trigger = yes
 		}
 		can_pick = {
 			custom_description = {
@@ -2348,6 +2554,13 @@
 					#flag:tenet_eastern_kingdoms_syncretism = { is_in_list = selected_doctrines }
 				}
 			}
+
+			custom_description = {
+				text = incompatible_tenet_intolerance_trigger
+				NOR = {
+					flag:intolerance_hostility_doctrine = { is_in_list = selected_doctrines }
+				}
+			}
 		}
 
 		parameters = {
@@ -2361,6 +2574,7 @@
 		}
 	}
 	
+	# Warcraft
 	# tenet_unreformed_syncretism = {
 		# icon = core_tenet_skyshaman
 		# piety_cost = {
@@ -2385,7 +2599,7 @@
 
 
 		# is_shown = {
-			# NOT = { has_doctrine = pagan_hostility_doctrine }
+			# NOT = { like_pagan_religion_trigger = yes }
 		# }
 		# can_pick = {
 			# custom_description = {
@@ -2424,17 +2638,19 @@
 			if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						has_doctrine = pagan_hostility_doctrine
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_mid
 			}
 			else_if = {
 				limit = {
-					OR = {
-						religion_tag = hinduism_religion
-					}
+					# Warcraft
+					# OR = {
+						like_hinduism_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_high
 			}
@@ -2494,17 +2710,19 @@
 		piety_cost = {
 			if = {
 				limit = {
-					religion = religion:hinduism_religion
-					religion = religion:jainism_religion
+					# Warcraft
+					like_hinduism_religion_trigger = yes
+					like_jainism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_mid
 			}
 			else_if = {
 				limit = {
-					has_doctrine = pagan_hostility_doctrine
-					religion = religion:buddhism_religion
-					religion = religion:christianity_religion
-					religion = religion:dualism_religion
+					# Warcraft
+					like_pagan_religion_trigger = yes
+					like_buddhism_religion_trigger = yes
+					like_christianity_religion_trigger = yes
+					like_dualism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_high
 			}
@@ -2520,11 +2738,14 @@
 		}
 
 		parameters = {
+			# Warcraft
 			#naked_adherents_active = yes
+
 			natural_primitivism_law_cost_increase = yes
 		}
 
 		character_modifier = {
+			# Warcraft
 			#New
 			cultural_head_fascination_mult = -0.25
 			
@@ -2537,17 +2758,19 @@
 	tenet_pursuit_of_power = {
 		icon = core_tenet_judged
 		
+		# Warcraft
 		is_shown = {
-			has_doctrine_tenet_pursuit_of_power_trigger = no
+			evil_public_religion_trigger = no	#They have it by default
 		}
 
 		piety_cost = {
 			if = {
 				limit = {
 					OR = {
-						has_doctrine = pagan_hostility_doctrine
-						religion_tag = hinduism_religion
-						religion_tag = islam_religion
+						# Warcraft
+						like_pagan_religion_trigger = yes
+						like_hinduism_religion_trigger = yes
+						like_islam_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_mid
@@ -2555,7 +2778,8 @@
 			else_if = {
 				limit = {
 					OR = {
-						religion_tag = judaism_religion
+						# Warcraft
+						like_judaism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -2566,7 +2790,7 @@
 
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine_tenet_pursuit_of_power_trigger = yes }
+				limit = { has_doctrine = tenet_pursuit_of_power }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
@@ -2595,8 +2819,9 @@
 	tenet_ritual_cannibalism = {
 		icon = core_tenet_foodsacrifice
 		
+		# Warcraft
 		is_shown = {
-			has_doctrine_tenet_ritual_cannibalism_trigger = no
+			always = yes
 		}
 
 		piety_cost = {
@@ -2609,15 +2834,17 @@
 			else_if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						has_doctrine = pagan_hostility_doctrine
+						like_pagan_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_mid
 			}
 			else_if = {
 				limit = {
-					religion_tag = hinduism_religion
+					# Warcraft
+					like_hinduism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_high
 			}
@@ -2627,7 +2854,7 @@
 
 			# Multiplier for keeping same tenet
 			if = {
-				limit = { has_doctrine_tenet_ritual_cannibalism_trigger = yes }
+				limit = { has_doctrine = tenet_ritual_cannibalism }
 				multiply = faith_unchanged_doctrine_cost_mult
 			}
 		}
@@ -2649,18 +2876,20 @@
 		piety_cost = {
 			if = {
 				limit = {
-					OR = {
-						has_doctrine = pagan_hostility_doctrine
-					}
+					# Warcraft
+					# OR = {
+						like_pagan_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_mid
 			}
 			else_if = {
 				limit = {
-					OR = {
-						religion_tag = islam_religion
-						religion_tag = judaism_religion
-					}
+					# OR = {
+						# Warcraft
+						like_islam_religion_trigger = yes
+						like_judaism_religion_trigger = yes
+					# }
 				}
 				value = faith_tenet_cost_high
 			}
@@ -2695,18 +2924,20 @@
 		piety_cost = {
 			if = {
 				limit = {
-					religion_tag = hinduism_religion
+					# Warcraft
+					like_hinduism_religion_trigger = yes
 				}
 				value = faith_tenet_cost_low
 			}
 			else_if = {
 				limit = {
 					OR = {
+						# Warcraft
 						like_christianity_religion_trigger = yes
-						religion_tag = judaism_religion
-						religion_tag = islam_religion
-						religion_tag = buddhism_religion
-						religion_tag = jainism_religion
+						like_judaism_religion_trigger = yes
+						like_islam_religion_trigger = yes
+						like_buddhism_religion_trigger = yes
+						like_jainism_religion_trigger = yes
 					}
 				}
 				value = faith_tenet_cost_high
@@ -2788,7 +3019,7 @@
 	##############################
 	#Cult of Strength
 	tenet_cult_of_strength = {
-		icon = core_tenet_nudism
+		icon = wc_core_tenet_flexing_muscles
 		piety_cost = {
 			value = faith_tenet_cost_high
 
@@ -2804,27 +3035,24 @@
 		}
 
 		character_modifier = {
-			name = blood_legacy_1_modifier
 			positive_random_genetic_chance = 0.30
 			positive_inactive_inheritance_chance = 0.30
 		}
 		
 		traits = {
 			virtues = {
-				physique_good_1
-				physique_good_2
-				physique_good_3
+				physique_good
+				strong
 			}
 			sins = {
-				physique_bad_1
-				physique_bad_2
-				physique_bad_3
+				physique_bad
+				weak
 			}
 		}
 	}
 	#Ritual Hunt
 	tenet_ritual_hunt = {
-		icon = core_tenet_marriage
+		icon = wc_core_tenet_bow
 
 		piety_cost = {
 			if = {
@@ -2955,5 +3183,39 @@
 			opinion_of_progressivist_opinion_active = -10
 		}
 	}
-}
+	#Moon Worship
+	# Combination of tenet_light_syncretism and tenet_astrology
+	tenet_moon_worship = {
+		icon = wc_core_tenet_moon_shaman
+		
+		piety_cost = {
+			value = faith_tenet_cost_high
 
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_moon_worship }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+		
+		is_shown = {
+			tenet_moon_worship_allowed_trigger = yes
+		}
+
+		can_pick = {
+			incompatible_tenet_light_magic_not_accepted_trigger = yes
+		}
+
+		parameters = {
+			divine_the_stars_active = yes
+			
+			#tenet_light_syncretism
+			light_syncretism_active = yes
+			hostility_override_light_hostility_doctrine = 1
+		}
+
+		character_modifier = {
+			naval_movement_speed_mult = 0.25
+		}
+	}
+}

@@ -177,9 +177,18 @@ start_hunt_decision = {
 		gold = {
 			add = standard_activity_cost
 			divide = 1.5
+
+			# Warcraft
 			if = {
 				limit = { faith = { has_doctrine_parameter = hunts_costs_less_active } }
 				multiply = 0.5
+			}
+
+			if = {
+				limit = {
+					has_character_flag = free_hunt
+				}
+				multiply = 0
 			}
 		}
 	}
@@ -196,25 +205,21 @@ start_hunt_decision = {
 	}
 
 	effect = {
-		custom_tooltip = line_break
 		custom_tooltip = start_hunt_decision_go_on_hunt
-		
+
+		# Warcraft
 		#Piety gain
 		if = {
-			limit = {
-				faith = { has_doctrine_parameter = piety_from_hunts_active }
-			}
-			add_piety = {
-				value = 0
-
-				faith = {
-					if = {
-						limit = { has_doctrine_parameter = piety_from_hunts_active }
-						add = medium_piety_value
-					}
+			limit = { faith = { has_doctrine_parameter = piety_from_hunts_active } }
+			add_piety = { value = medium_piety_value }
+		}
+		
+		hidden_effect = {
+			if = {
+				limit = {
+					has_character_flag = free_hunt
 				}
-
-				min = medium_piety_value # Always give some piety, even if we don't have any of the specified tenets.
+				remove_character_flag = free_hunt
 			}
 		}
 
@@ -240,11 +245,7 @@ start_hunt_decision = {
 			}
 		}
 
-		#custom_tooltip = line_break
-		#custom_tooltip = start_hunt_decision_tt_header
 		custom_tooltip = start_hunt_decision_prestige
-		#custom_tooltip = start_hunt_decision_stress
-		#custom_tooltip = line_break
 		
 		hidden_effect = {
 			random_sub_realm_barony = {

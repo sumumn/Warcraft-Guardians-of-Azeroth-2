@@ -8,7 +8,7 @@
 	doctrine = doctrine_temporal_head
 	doctrine = doctrine_gender_equal
 	doctrine = doctrine_pluralism_righteous
-	doctrine = doctrine_theocracy_temporal
+	doctrine = doctrine_theocracy_lay_clergy
 
 	#Marriage
 	doctrine = doctrine_polygamy
@@ -24,11 +24,25 @@
 	doctrine = doctrine_deviancy_accepted
 	doctrine = doctrine_witchcraft_accepted
 
+	#Magic
+	doctrine = doctrine_light_magic_ignored
+	doctrine = doctrine_shadow_magic_crime
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_ignored
+	doctrine = doctrine_life_magic_approved
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_accepted
+	doctrine = doctrine_elemental_decay_magic_accepted
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_accepted
+	doctrine = doctrine_elemental_earth_magic_accepted
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_recruitment
 	doctrine = doctrine_clerical_gender_either
 	doctrine = doctrine_clerical_marriage_allowed
-	doctrine = doctrine_clerical_succession_spiritual_fixed_appointment
+	doctrine = doctrine_clerical_succession_temporal_fixed_appointment
 
 	# Placeholder
 	traits = {
@@ -160,7 +174,8 @@
 		ReligiousSymbol = TOTEM_NAME
 		ReligiousText = STORIES_NAME
 		
-		ReligiousHeadName = HIGH_SHAMAN_NAME
+		ReligiousHeadName = HIGH_SHAMAN_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_SHAMAN_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_CHURCH_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -210,12 +225,21 @@
 		monkey_king_worship = {
 			#Main Group
 			color = rgb { 204 255 51 }
-			icon = germanic
-			reformed_icon = germanic_reformed
+			icon = wcmw_monkey_king_worship
+			reformed_icon = wcmw_monkey_king_worship
 			
 			doctrine = unreformed_faith_doctrine
+			
+			holy_site = banana_forest
+			holy_site = unga_ingoo
+			holy_site = grookin
+			holy_site = stormstout
+			holy_site = lushat_lan
+			
+			#Main Group
+			doctrine = doctrine_no_head
 
-			doctrine = tenet_pursuit_of_power
+			doctrine = tenet_warmonger
 			doctrine = tenet_hedonistic
 			doctrine = tenet_esotericism
 		}

@@ -24,6 +24,20 @@
 	doctrine = doctrine_deviancy_shunned
 	doctrine = doctrine_witchcraft_crime
 
+	#Magic
+	doctrine = doctrine_light_magic_accepted
+	doctrine = doctrine_shadow_magic_crime
+	doctrine = doctrine_disorder_magic_crime
+	doctrine = doctrine_order_magic_accepted
+	doctrine = doctrine_life_magic_ignored
+	doctrine = doctrine_death_magic_crime
+	doctrine = doctrine_elemental_spirit_magic_accepted
+	doctrine = doctrine_elemental_decay_magic_ignored
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_accepted
+	doctrine = doctrine_elemental_earth_magic_accepted
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
 	doctrine = doctrine_clerical_gender_either
@@ -166,7 +180,8 @@
 		ReligiousSymbol = GEAR_NAME
 		ReligiousText = SCRIPTURES_NAME
 		
-		ReligiousHeadName = HIGH_TINKER_NAME
+		ReligiousHeadName = HIGH_TINKER_MALE_NAME
+		ReligiousHeadNameFemale = HIGH_TINKER_FEMALE_NAME
 		ReligiousHeadTitleName = HIGH_TINKERHOOD
 		
 		DevoteeMale = TINKER_MALE_NAME
@@ -215,17 +230,29 @@
 		rationalism = {
 			#Main Group
 			color = rgb { 125 100 80 }
-			icon = custom_faith_1
+			icon = wcmw_rationalism
+
+			holy_site = gnomeregan
+			holy_site = ulduar
+			holy_site = red_desert
+			holy_site = ironforge
+			holy_site = grim_batol
 
 			doctrine = tenet_eastern_kingdoms_syncretism
 			doctrine = tenet_progressivism
-			doctrine = tenet_communal_identity
+			doctrine = tenet_alexandrian_catechism
 		}
 
 		cult_of_wealth = {
 			#Main Group
 			color = rgb { 255 215 20 }
-			icon = custom_faith_1
+			icon = wcbbmw_cult_of_wealth
+
+			holy_site = mount_kajaro
+			holy_site = wild_cape
+			holy_site = bogpaddle
+			holy_site = edj
+			holy_site = gadgetzan
 
 			doctrine = tenet_hedonistic
 			doctrine = tenet_consumerism

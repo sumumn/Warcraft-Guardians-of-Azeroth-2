@@ -24,6 +24,20 @@
 	doctrine = doctrine_deviancy_shunned
 	doctrine = doctrine_witchcraft_shunned
 
+	#Magic
+	doctrine = doctrine_light_magic_ignored
+	doctrine = doctrine_shadow_magic_accepted
+	doctrine = doctrine_disorder_magic_accepted
+	doctrine = doctrine_order_magic_approved
+	doctrine = doctrine_life_magic_ignored
+	doctrine = doctrine_death_magic_accepted
+	doctrine = doctrine_elemental_spirit_magic_ignored
+	doctrine = doctrine_elemental_decay_magic_accepted
+	doctrine = doctrine_elemental_fire_magic_accepted
+	doctrine = doctrine_elemental_water_magic_accepted
+	doctrine = doctrine_elemental_air_magic_accepted
+	doctrine = doctrine_elemental_earth_magic_accepted
+
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_recruitment
 	doctrine = doctrine_clerical_gender_male_only
@@ -32,8 +46,8 @@
 
 	# Placeholder
 	traits = {
-		virtues = { forgiving compassionate brave }
-		sins = { vengeful sadistic callous craven }
+		virtues = { brave stubborn greedy }
+		sins = { craven fickle generous }
 	}
 
 	# Placeholder
@@ -167,7 +181,8 @@
 		ReligiousSymbol = EYE_NAME
 		ReligiousText = LIBRAM_NAME
 		
-		ReligiousHeadName = HIGH_MAGISTER_NAME
+		ReligiousHeadName = GRAND_MAGISTER_MALE_NAME
+		ReligiousHeadNameFemale = GRAND_MAGISTER_FEMALE_NAME
 		ReligiousHeadTitleName = MAGISTERIA_NAME
 		
 		DevoteeMale = MONK_NAME
@@ -216,11 +231,24 @@
 		gorgog_worship = {
 			#Main Group
 			color = rgb { 255 153 51 }
-			icon = custom_faith_1
+			religious_head = d_gorgog_worship
+			icon = wcmw_gorgog_worship
+			reformed_icon = wcmw_gorgog_worship
+			
+			doctrine = unreformed_faith_doctrine
+			
+			holy_site = maraudon
+			holy_site = dark_portal
+			holy_site = eldrethalas
+			holy_site = thunder_bluff
+			holy_site = zulfarrak
+			
+			#Main Group
+			doctrine = doctrine_no_head
 
-			doctrine = tenet_astrology
-			doctrine = tenet_literalism
-			doctrine = tenet_religious_legal_pronouncements
+			doctrine = tenet_warmonger
+			doctrine = tenet_ritual_cannibalism
+			doctrine = tenet_hedonistic
 		}
 	}
 }
