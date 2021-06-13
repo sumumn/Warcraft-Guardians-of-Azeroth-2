@@ -15,6 +15,15 @@
  GRAND_MAGISTER_FEMALE_NAME:0 "Grande Magistrice"
  MAGISTERIA_NAME:0 "Magisteria"
  
+ MAJORDOMO_MALE_NAME:0 "Chambellan"
+ MAJORDOMO_FEMALE_NAME:0 "Chambellane"
+ 
+ HERALD_MALE_NAME:0 "Héraut"
+ HERALD_FEMALE_NAME:0 "Héraut"
+ 
+ HIGH_INQUISITOR_MALE_NAME:0 "Grand inquisiteur"
+ HIGH_INQUISITOR_FEMALE_NAME:0 "Grande inquisitrice"
+
  MONK_NAME:0 "moine"
  MONK_PLURAL:0 "moines"
  NUN_NAME:0 "nonne"
@@ -85,8 +94,19 @@
  MOON_NAME:0 "lune"
  STORIES_NAME:0 "histoires"
  
+ PROPHET_MALE_NAME:0 "Prophète"
+ PROPHET_FEMALE_NAME:0 "Prophétesse"
+ 
+ PATRIARCH_NAME:0 "Patriarche"
+ MATRIARCH_NAME:0 "Matriarche"
+ 
+ HIGH_PROPHET_MALE_NAME:0 "Grand prophète"
+ HIGH_PROPHET_FEMALE_NAME:0 "Grande prophétesse"
+
  HIGH_PRIEST_NAME:0 "Grand prêtre"
- HIGH_PRIESTHOOD_NAME:0 "Grande prêtresse"
+ HIGH_PRIEST_FEMALE_NAME:0 "Grande prêtresse"
+
+ HIGH_PRIESTHOOD_NAME:0 "Curie"
  
  EMERALD_DREAM_NAME:0 "le Rêve d'Émeraude"
  GREAT_FOREST_BEYOND_NAME:0 "La grande forêt de l'Au-delà"
@@ -103,7 +123,9 @@
  
  HAMMER_NAME:0 "marteau"
  
- HIGH_SHAMAN_NAME:0 "Haut chaman"
+ HIGH_SHAMAN_MALE_NAME:0 "Haut chaman"
+ HIGH_SHAMAN_FEMALE_NAME:0 "Haute chamane"
+
  HIGH_CHURCH_NAME:0 "Haute Église"
  
  SHAMAN_MALE_NAME:0 "chaman"
@@ -129,8 +151,9 @@
  FLAME_NAME:0 "flamme"
  GRIMOIRES_NAME:0 "grimoires"
  
- HIGH_WARLOCK_NAME:0 "Grand Démoniste"
- 
+ HIGH_WARLOCK_MALE_NAME:0 "Grand Démoniste"
+ HIGH_WARLOCK_FEMALE_NAME:0 "Grande Démoniste"
+
  WARLOCK_MALE_NAME:0 "démoniste"
  WARLOCK_MALE_PLURAL:0 "démonistes"
  WARLOCK_FEMALE_NAME:0 "démoniste"
@@ -167,6 +190,8 @@
  SCRIPTURES_NAME:0 "écritures"
  
  ARCHBISHOP_NAME:0 "Archevêque"
+ ARCHBISHOP_FEMALE_NAME:0 "Archevêchesse"
+ 
  ARCHBISHOPRIC_NAME:0 "Archevêché"
  
  CLERGY_NAME:0 "clergé"
@@ -181,7 +206,7 @@
  DARK_TITAN_NAME:0 "le Titan Noir"
  
  FORTUNA_NAME:0 "Fortuna"
- FORTUNA_POSSESSIVE:0 "Fortuna's"
+ FORTUNA_POSSESSIVE:0 "de Fortuna"
  
  NAARU_NAME:0 "Naaru"
  NAARU_POSSESSIVE:0 "du Naaru"
@@ -337,7 +362,8 @@
  
  WORLD_WIDE_WEB_NAME:0 "toile mondiale"
  
- HIGH_TINKER_NAME:0 "Grand Bricoleur"
+ HIGH_TINKER_MALE_NAME:0 "Grand Bricoleur"
+ HIGH_TINKER_FEMALE_NAME:0 "Grande Bricoleuse"
  HIGH_TINKERHOOD:0 "Grande Bricolerie"
  
  TINKER_MALE_NAME:0 "bricoleur"
@@ -376,9 +402,6 @@
  KARKUT_NAME:0 "Karkut"
  KARKUT_POSSESSIVE:0 "de Karkut"
  
- MONKEY_KING_NAME:0 "Roi-Singe"
- MONKEY_KING_POSSESSIVE:0 "du Roi-Singe"
- 
  KROS_NAME:0 "Kros"
  KROS_POSSESSIVE:0 "de Kros"
  
@@ -404,3 +427,28 @@
  ### Keepers
  ODYN_NAME:0 "Odyn"
  ODYN_POSSESSIVE:0 "d'Odyn"
+ 
+ ### Old Gods
+ CTHUN_NAME:0 "C'Thun"
+ CTHUN_POSSESSIVE:0 "de C'Thun"
+ 
+ YSHAARJ_NAME:0 "Y'Shaarj"
+ YSHAARJ_POSSESSIVE:0 "d'Y'Shaarj"
+ 
+ NZOTH_NAME:0 "N'Zoth"
+ NZOTH_POSSESSIVE:0 "de N'Zoth"
+ 
+ YOGG_SARON_NAME:0 "Yogg-Saron"
+ YOGG_SARON_POSSESSIVE:0 "de Yogg-Saron"
+ 
+ GHUUN_NAME:0 "G'huun"
+ GHUUN_POSSESSIVE:0 "de G'huun"
+ 
+ HIGH_SEA_PRIEST_MALE_NAME:0 "Grand Prêtre des mers"
+ HIGH_SEA_PRIEST_FEMALE_NAME:0 "Grande Prêtresse des mers"
+ 
+ VALHALLAS_NAME:0 "Valhallas"
+ HELHEIM_NAME:0 "Helheim"
+
+ ARCHMAGE_MALE_NAME:0 "Archimage"
+ ARCHMAGE_FEMALE_NAME:0 "Archimage"
