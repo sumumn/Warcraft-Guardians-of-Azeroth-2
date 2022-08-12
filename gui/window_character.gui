@@ -797,7 +797,7 @@ window = {
 							}
 
 							#Warcraft
-							text_single	 = {
+							text_single = {
 								visible = "[LessThanOrEqualTo_int32(Character.GetBirthDate.GetYear, '(int32)20')]"
 								name = "character_age_2"
 								raw_text = " ???"
@@ -1299,6 +1299,59 @@ window = {
 
 						expand = {}
 					}
+
+					# Warcraft
+					divider_light = {
+						layoutpolicy_horizontal = expanding
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						background = {
+							using = Background_Area
+						}
+						#margin_top = 3
+						#margin_bottom = 3
+						datacontext = "[CharacterWindow.GetCharacter.MakeScope]"
+
+						hbox = {
+							icon = {
+								#visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
+								size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds"
+							}
+							tooltipwidget = {
+								widget_wc_magic_infusion_tooltip = {
+									blockoverride "wc_zero_magic_infusion_visible_block" {
+										visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+									}
+								}
+							}
+						}
+						hbox = {
+							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
+							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+						}
+						hbox = {
+							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
+							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+						}
+						hbox = {
+							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
+							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+						}
+						hbox = {
+							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
+							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+						}
+						divider_light = {
+							layoutpolicy_vertical = expanding
+						}
+						hbox = {
+							spacer = {
+								size = { 240 0 }
+							}
+						}
+					}
+
 				}
 
 				divider_light = {
