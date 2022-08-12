@@ -39,7 +39,83 @@ types WCMagicInfusion {
 				}
 
 				hbox = {
+					widget = { # Fake widget
+						block "wc_zero_magic_infusion_visible_block"
+						{
+							visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+						}
+						size = { 220 55 }
+
+						widget = {
+							parentanchor = center
+							size = { 360 108 }
+
+							# tooltip = "PLAYER_STRESS_TOOLTIP"
+							# using = tooltip_ne
+
+							widget = {
+								parentanchor = center
+								widgetanchor = left|vcenter
+								position = { 20 0 }
+								size = { 60 20 }
+
+								background = {
+									texture = "gfx/interface/colors/white.dds"
+									color = { 0.1 0.1 0.1 0.8 }
+								}
+							}
+							widget = {
+								parentanchor = center
+								widgetanchor = right|vcenter
+								position = { -20 0 }
+								size = { 60 20 }
+
+								background = {
+									texture = "gfx/interface/colors/white.dds"
+									color = { 0.1 0.1 0.1 0.8 }
+								}
+							}
+							icon = {
+								size = { 100% 100% }
+								texture = "gfx/progressbars/wc_triple_magic_infusion_bg.dds"
+
+								icon = {
+									parentanchor = vcenter
+									position = { 62 0 }
+									size = { 35 35 }
+
+									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
+									mirror = horizontal
+									framesize = { 70 70 }
+									block "wc_current_magic_infusion_level_to_frame_block"
+									{
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_previous_light_shadow_infusion_level_icon_value') ) )]"
+									}
+								}
+								icon = {
+									parentanchor = vcenter
+									position = { 162 0 }
+									size = { 35 35 }
+
+									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
+									framesize = { 70 70 }
+									frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+								}
+								icon = {
+									parentanchor = vcenter
+									position = { 264 0 }
+									size = { 35 35 }
+
+									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
+									framesize = { 70 70 }
+									frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_next_light_shadow_infusion_level_icon_value') ) )]"
+								}
+							}
+						}
+					}
+
 					widget = {
+						visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
 						size = { 110 55 }
 
 						widget = {
@@ -51,8 +127,8 @@ types WCMagicInfusion {
 
 							widget = {
 								parentanchor = center
-								widgetanchor = left|vcenter
-								position = { -13 0 }
+								widgetanchor = right|vcenter
+								position = { 13 0 }
 								size = { 60 20 }
 
 								background = {
@@ -92,7 +168,7 @@ types WCMagicInfusion {
 									widget = {
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
 
 										wc_magic_infusion_progressbar = {
 											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
@@ -170,7 +246,7 @@ types WCMagicInfusion {
 									widget = {
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
 									}
 								}
 							}
@@ -208,6 +284,7 @@ types WCMagicInfusion {
 								progressbar_hud_stress_glow = {
 									visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
 									texture = "gfx/interface/hud/hud_stress_glow_red.dds"
+									mirror = horizontal
 
 									blockoverride "animation_trigger_1" {
 										name = "lvl3_fire"
@@ -220,10 +297,11 @@ types WCMagicInfusion {
 
 								icon = {
 									parentanchor = center
-									position = { -30 0 }
+									position = { 30 0 }
 									size = { 30 30 }
 									texture = "gfx/interface/colors/white.dds"
 									using = Color_Red
+									mirror = horizontal
 
 
 									modify_texture = {
@@ -361,15 +439,17 @@ types WCMagicInfusion {
 								icon = {
 									size = { 100% 100% }
 									texture = "gfx/interface/skinned/hud_stress_bg.dds"
+									mirror = horizontal
 
 									icon = {
 										parentanchor = vcenter
-										position = { 41 0 }
+										position = { 105 0 }
 										size = { 35 35 }
 
 										texture = "gfx/interface/icons/stress/icon_stress_level.dds"
 										framesize = { 70 70 }
 										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_value') ) )]"
+										mirror = horizontal
 
 										modify_texture = {
 											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
@@ -450,6 +530,7 @@ types WCMagicInfusion {
 					}
 
 					widget = {
+						visible = "[GreaterThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
 						size = { 110 55 }
 
 						widget = {
