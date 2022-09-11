@@ -1,0 +1,76 @@
+﻿@wc_magic_infusion_level_step_local_value = 100
+
+wc_min_magic_infusion_value = -400
+wc_max_magic_infusion_value = 400
+
+# Light-Shadow
+
+wc_current_light_shadow_infusion_value = {
+	value = 0
+
+	if = {
+		limit = { has_variable = wc_light_shadow_infusion_variable }
+		add = var:wc_light_shadow_infusion_variable
+	}
+}
+
+wc_current_light_shadow_infusion_level_value = {
+	value = wc_current_light_shadow_infusion_value
+	divide = @[wc_magic_infusion_level_step_local_value]
+	if = {
+		limit = { wc_current_light_shadow_infusion_value < 0 }
+		multiply = -1
+	}
+	floor = yes
+}
+wc_next_light_shadow_infusion_level_value = {
+	value = wc_current_light_shadow_infusion_level_value
+	add = 1
+}
+
+wc_previous_light_shadow_infusion_level_threshold_value = {
+	value = wc_current_light_shadow_infusion_level_value
+	multiply = @[wc_magic_infusion_level_step_local_value]
+}
+wc_next_light_shadow_infusion_level_threshold_value = {
+	value = wc_current_light_shadow_infusion_level_value
+	add = 1
+	max = 4
+	multiply = @[wc_magic_infusion_level_step_local_value]
+}
+
+wc_layoutstretchfactor_light_shadow_infusion_value = { # Used in GUI
+	value = wc_current_light_shadow_infusion_value
+	if = {
+		limit = { wc_current_light_shadow_infusion_value < 0 }
+		multiply = -1
+	}
+	subtract = {
+		value = wc_current_light_shadow_infusion_level_value
+		max = 3
+		multiply = @[wc_magic_infusion_level_step_local_value]
+	}
+}
+
+wc_current_light_shadow_infusion_level_icon_value = {
+	value = 3
+	add = {
+		value = wc_current_light_shadow_infusion_value
+		divide = @[wc_magic_infusion_level_step_local_value]
+	}
+	if = {
+		limit = { wc_current_light_shadow_infusion_value < 0 }
+		ceiling = yes
+	}
+	else = { floor = yes }
+}
+wc_positive_light_shadow_infusion_level_icon_value = {
+	value = wc_current_light_shadow_infusion_level_icon_value
+	add = 1
+}
+wc_negative_light_shadow_infusion_level_icon_value = {
+	value = wc_current_light_shadow_infusion_level_icon_value
+	subtract = 1
+}
+
+# Order-Disorder

@@ -1,0 +1,11 @@
+﻿l_english:
+ wc_change_light_shadow_infusion_by_value_effect_first:0 "Shifts Light-Shadow infusion by $VALUE|0$ towards Light"
+ wc_change_light_shadow_infusion_by_value_effect_first_neg:0 "Shifts Light-Shadow infusion by $VALUE|0$ towards Shadow"
+ wc_change_disorder_order_infusion_by_value_effect_first:0 "Shifts Order-Disorder infusion by $VALUE|0$ towards Disorder"
+ wc_change_disorder_order_infusion_by_value_effect_first_neg:0 "Shifts Order-Disorder infusion by $VALUE|0$ towards Order"
+ wc_change_life_death_infusion_by_value_effect_first:0 "Shifts Life-Death infusion by $VALUE|0$ towards Life"
+ wc_change_life_death_infusion_by_value_effect_first_neg:0 "Shifts Life-Death infusion by $VALUE|0$ towards Death"
+ wc_change_fire_water_infusion_by_value_effect_first:0 "Shifts Fire-Water infusion by $VALUE|0$ towards Fire"
+ wc_change_fire_water_infusion_by_value_effect_first_neg:0 "Shifts Fire-Water infusion by $VALUE|0$ towards Water"
+ wc_change_air_earth_infusion_by_value_effect_first:0 "Shifts Air-Earth infusion by $VALUE|0$ towards Air"
+ wc_change_air_earth_infusion_by_value_effect_first_neg:0 "Shifts Air-Earth infusion by $VALUE|0$ towards Earth"

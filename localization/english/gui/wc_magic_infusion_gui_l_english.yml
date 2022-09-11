@@ -1,0 +1,3 @@
+﻿l_english:
+ WC_CURRENT_LIGHT_SHADOW_INFUSION_LINE:0 "level [Scope.ScriptValue('wc_current_light_shadow_infusion_level_value')]\n\n[Scope.Var('wc_light_shadow_infusion_variable').GetValue]"
+ WC_MAGINFTEST:0 "min [Scope.ScriptValue('wc_previous_light_shadow_infusion_level_threshold_value')]\nmax [Scope.ScriptValue('wc_next_light_shadow_infusion_level_threshold_value')]\nlayoutstretchfactor [Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')]"

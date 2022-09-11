@@ -1,5 +1,5 @@
 types WCMagicInfusion {
-	type widget_wc_magic_infusion_tooltip = widget {
+	type widget_wc_magic_infusion_tooltipwidget = widget {
 
 		alwaystransparent = no
 		filter_mouse = all
@@ -19,7 +19,7 @@ types WCMagicInfusion {
 					layoutpolicy_horizontal = expanding
 					text = WC_CURRENT_LIGHT_SHADOW_INFUSION_LINE
 					align = top
-
+			
 					using = Font_Size_Medium
 				}
 			}
@@ -40,24 +40,21 @@ types WCMagicInfusion {
 
 				hbox = {
 					widget = { # Fake widget
-						block "wc_zero_magic_infusion_visible_block"
+						block "wc_equalto_0_magic_infusion_visible_block"
 						{
 							visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
 						}
-						size = { 220 55 }
+						size = { 400 100 }
 
 						widget = {
 							parentanchor = center
-							size = { 360 108 }
-
-							# tooltip = "PLAYER_STRESS_TOOLTIP"
-							# using = tooltip_ne
+							size = { 540 162 }
 
 							widget = {
 								parentanchor = center
 								widgetanchor = left|vcenter
-								position = { 20 0 }
-								size = { 60 20 }
+								position = { 31 0 }
+								size = { 90 42 }
 
 								background = {
 									texture = "gfx/interface/colors/white.dds"
@@ -67,8 +64,8 @@ types WCMagicInfusion {
 							widget = {
 								parentanchor = center
 								widgetanchor = right|vcenter
-								position = { -20 0 }
-								size = { 60 20 }
+								position = { -31 0 }
+								size = { 90 42 }
 
 								background = {
 									texture = "gfx/interface/colors/white.dds"
@@ -77,870 +74,56 @@ types WCMagicInfusion {
 							}
 							icon = {
 								size = { 100% 100% }
-								texture = "gfx/progressbars/wc_triple_magic_infusion_bg.dds"
+								texture = "gfx/wc_magic_infusion_gfx/wc_triple_magic_infusion_bg.dds"
 
 								icon = {
 									parentanchor = vcenter
-									position = { 62 0 }
-									size = { 35 35 }
+									position = { 92 0 }
+									size = { 50 50 }
 
-									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
-									mirror = horizontal
-									framesize = { 70 70 }
+									block "wc_previous_magic_infusion_level_to_frame_block"
+									{
+										texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+										framesize = { 70 70 }
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_negative_light_shadow_infusion_level_icon_value') ) )]"
+									}
+								}
+								icon = {
+									parentanchor = vcenter
+									position = { 245 0 }
+									size = { 50 50 }
+
 									block "wc_current_magic_infusion_level_to_frame_block"
 									{
-										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_previous_light_shadow_infusion_level_icon_value') ) )]"
-									}
-								}
-								icon = {
-									parentanchor = vcenter
-									position = { 162 0 }
-									size = { 35 35 }
-
-									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
-									framesize = { 70 70 }
-									frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
-								}
-								icon = {
-									parentanchor = vcenter
-									position = { 264 0 }
-									size = { 35 35 }
-
-									texture = "gfx/interface/icons/wc_infusions/icon_light_void_level.dds"
-									framesize = { 70 70 }
-									frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_next_light_shadow_infusion_level_icon_value') ) )]"
-								}
-							}
-						}
-					}
-
-					widget = {
-						visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
-						size = { 110 55 }
-
-						widget = {
-							parentanchor = center
-							size = { 180 108 }
-
-							# tooltip = "PLAYER_STRESS_TOOLTIP"
-							# using = tooltip_ne
-
-							widget = {
-								parentanchor = center
-								widgetanchor = right|vcenter
-								position = { 13 0 }
-								size = { 60 20 }
-
-								background = {
-									texture = "gfx/interface/colors/white.dds"
-									color = { 0.1 0.1 0.1 0.8 }
-								}
-
-								icon = {
-									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-									size = { 100% 100% }
-									texture = "gfx/interface/colors/white.dds"
-									color = { 1 0.1 0.1 0.2 }
-
-									using = Animation_ShowHide_Standard
-
-									state = {
-										name = a
-										next = b
-										trigger_on_create = yes
-
-										using = Animation_Curve_Default
-										duration = 0.8
-										alpha = 0
-									}
-
-									state = {
-										name = b
-										next = a
-
-										using = Animation_Curve_Default
-										duration = 1.5
-										alpha = 1
-									}
-								}
-
-								hbox = {
-									widget = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
-
-										wc_magic_infusion_progressbar = {
-											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/red.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/gold.dds"
-												alpha = 0.7
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/orange.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)1')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/gold_darker.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/blue.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-									}
-
-									widget = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
-									}
-								}
-							}
-
-							widget = {
-								size = { 100% 100% }
-
-								progressbar_hud_stress_glow = {
-									texture = "gfx/interface/hud/hud_stress_glow_red.dds"
-
-									blockoverride "animation_trigger_1"
-									{
-										name = "stress_level_increase"
-									}
-
-									blockoverride "animation_trigger_2"
-									{
-										name = "stress_increase"
-									}
-								}
-
-								progressbar_hud_stress_glow = {
-									texture = "gfx/interface/hud/hud_stress_glow_blue.dds"
-
-									blockoverride "animation_trigger_1" {
-										name = "stress_level_decrease"
-									}
-
-									blockoverride "animation_trigger_2"
-									{
-										name = "stress_decrease"
-									}
-								}
-
-								progressbar_hud_stress_glow = {
-									visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
-									texture = "gfx/interface/hud/hud_stress_glow_red.dds"
-									mirror = horizontal
-
-									blockoverride "animation_trigger_1" {
-										name = "lvl3_fire"
-										trigger_on_create = yes
-									}
-
-									blockoverride "animation_trigger_2" {}
-									blockoverride "lvl_3" {}
-								}
-
-								icon = {
-									parentanchor = center
-									position = { 30 0 }
-									size = { 30 30 }
-									texture = "gfx/interface/colors/white.dds"
-									using = Color_Red
-									mirror = horizontal
-
-
-									modify_texture = {
-										name = "mask_1"
-										texture = "gfx/interface/component_masks/mask_glow.dds"
-										blend_mode = alphamultiply
-										rotate_uv = 1
-									}
-
-									modify_texture = {
-										name = "mask_2"
-										texture = "gfx/interface/component_masks/mask_glow.dds"
-										blend_mode = alphamultiply
-										rotate_uv = -1
-									}
-
-									modify_texture = {
-										name = "mask_3"
-										texture = "gfx/interface/component_masks/mask_clouds.dds"
-										blend_mode = alphamultiply
-										alpha = 0.1
-									}
-
-									modify_texture = {
-										name = "mask_4"
-										texture = "gfx/interface/component_masks/mask_circle.dds"
-										blend_mode = mask
-									}
-
-									modify_texture = {
-										name = "mask_3"
-										texture = "gfx/interface/colors/gold.dds"
-										blend_mode = add
-									}
-
-									state = {
-										name = "stress_level_increase"
-										next = b
-
-										using = Animation_Curve_Default
-										scale = 1
-										alpha = 0
-									}
-
-									state = {
-										name = b
-										next = c
-
-										duration = 0.6
-										bezier = { 0.5 0 1 0.5 }
-
-										scale = 5
-										alpha = 0.7
-									}
-
-									state = {
-										name = c
-										duration = 0.3
-										alpha = 0
-										scale = 6
-									}
-
-									state = {
-										name = rotate_a
-										next = rotate_b
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_1"
-											rotate_uv = 1
-										}
-									}
-
-									state = {
-										name = rotate_a
-										next = rotate_b
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_1"
-											rotate_uv = 180
-										}
-									}
-
-									state = {
-										name = rotate_a_2
-										next = rotate_b_2
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_2"
-											rotate_uv = -1
-										}
-									}
-
-									state = {
-										name = rotate_a_2
-										next = rotate_b_2
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_2"
-											rotate_uv = -180
-										}
-									}
-
-									state = {
-										name = rotate_a_3
-										next = rotate_b_3
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_3"
-											rotate_uv = 0
-											alpha = 0.1
-										}
-									}
-
-									state = {
-										name = rotate_a_3
-										next = rotate_b_3
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_3"
-											rotate_uv = 40
-											alpha = 0.8
-										}
-									}
-								}
-
-								icon = {
-									size = { 100% 100% }
-									texture = "gfx/interface/skinned/hud_stress_bg.dds"
-									mirror = horizontal
-
-									icon = {
-										parentanchor = vcenter
-										position = { 105 0 }
-										size = { 35 35 }
-
-										texture = "gfx/interface/icons/stress/icon_stress_level.dds"
+										texture = "gfx/interface/icons/wc_infusions/wc_light_shadow_level_icons.dds"
 										framesize = { 70 70 }
-										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_value') ) )]"
-										mirror = horizontal
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+									}
+								}
+								icon = {
+									parentanchor = vcenter
+									position = { 398 0 }
+									size = { 50 50 }
 
-										modify_texture = {
-											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-											name = "lvl3_glow"
-											texture = "gfx/interface/colors/gold.dds"
-											blend_mode = colordodge
-											alpha = 0
-										}
-
-										modify_texture = {
-											name = "lvl_increase"
-											texture = "gfx/interface/colors/gold.dds"
-											blend_mode = colordodge
-											alpha = 0
-										}
-
-										state = {
-											name = a
-											next = b
-											duration = 0.6
-											trigger_on_create = yes
-											using = Animation_Curve_Default
-
-											modify_texture = {
-												name = "lvl3_glow"
-												alpha = 0.3
-											}
-										}
-
-										state = {
-											name = b
-											next = a
-											duration = 1.5
-											using = Animation_Curve_Default
-
-											modify_texture = {
-												name = "lvl3_glow"
-												alpha = 0
-											}
-										}
-
-										state = {
-											name = "stress_level_increase"
-											next = "stress_level_increase_2"
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0
-											}
-										}
-
-										state = {
-											name = "stress_level_increase_2"
-											next = "stress_level_increase_3"
-											duration = 0.4
-											bezier = { 0.5 0 1 0.5 }
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0.7
-											}
-										}
-
-										state = {
-											name = "stress_level_increase_3"
-											duration = 0.5
-											bezier = { 0 0.5 0.5 1 }
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0
-											}
-										}
+									block "wc_next_magic_infusion_level_to_frame_block"
+									{
+										texture = "gfx/interface/icons/wc_infusions/wc_light_shadow_level_icons.dds"
+										framesize = { 70 70 }
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_positive_light_shadow_infusion_level_icon_value') ) )]"
 									}
 								}
 							}
 						}
 					}
 
-					widget = {
-						visible = "[GreaterThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
-						size = { 110 55 }
-
-						widget = {
-							parentanchor = center
-							size = { 180 108 }
-
-							# tooltip = "PLAYER_STRESS_TOOLTIP"
-							# using = tooltip_ne
-
-							widget = {
-								parentanchor = center
-								widgetanchor = right|vcenter
-								position = { 13 0 }
-								size = { 60 20 }
-
-								background = {
-									texture = "gfx/interface/colors/white.dds"
-									color = { 0.1 0.1 0.1 0.8 }
-								}
-
-								icon = {
-									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-									size = { 100% 100% }
-									texture = "gfx/interface/colors/white.dds"
-									color = { 1 0.1 0.1 0.2 }
-
-									using = Animation_ShowHide_Standard
-
-									state = {
-										name = a
-										next = b
-										trigger_on_create = yes
-
-										using = Animation_Curve_Default
-										duration = 0.8
-										alpha = 0
-									}
-
-									state = {
-										name = b
-										next = a
-
-										using = Animation_Curve_Default
-										duration = 1.5
-										alpha = 1
-									}
-								}
-
-								hbox = {
-									widget = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
-
-										wc_magic_infusion_progressbar = {
-											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/red.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/gold.dds"
-												alpha = 0.7
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/orange.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)1')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/gold_darker.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-
-										wc_magic_infusion_progressbar = {
-											visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
-											size = { 100% 100% }
-
-											using = Animation_ShowHide_Standard
-
-											blockoverride "bar_color"
-											{
-												texture = "gfx/interface/colors/blue.dds"
-											}
-
-											blockoverride "bar_color_flow"
-											{
-												texture = "gfx/interface/colors/white.dds"
-												alpha = 0.3
-											}
-										}
-									}
-
-									widget = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = expanding
-										layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_infusion_value')), '(float)100', '(int32)60' )]"
-									}
-								}
-							}
-
-							widget = {
-								size = { 100% 100% }
-
-								progressbar_hud_stress_glow = {
-									texture = "gfx/interface/hud/hud_stress_glow_red.dds"
-
-									blockoverride "animation_trigger_1"
-									{
-										name = "stress_level_increase"
-									}
-
-									blockoverride "animation_trigger_2"
-									{
-										name = "stress_increase"
-									}
-								}
-
-								progressbar_hud_stress_glow = {
-									texture = "gfx/interface/hud/hud_stress_glow_blue.dds"
-
-									blockoverride "animation_trigger_1" {
-										name = "stress_level_decrease"
-									}
-
-									blockoverride "animation_trigger_2"
-									{
-										name = "stress_decrease"
-									}
-								}
-
-								progressbar_hud_stress_glow = {
-									visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
-									texture = "gfx/interface/hud/hud_stress_glow_red.dds"
-									mirror = horizontal
-
-									blockoverride "animation_trigger_1" {
-										name = "lvl3_fire"
-										trigger_on_create = yes
-									}
-
-									blockoverride "animation_trigger_2" {}
-									blockoverride "lvl_3" {}
-								}
-
-								icon = {
-									parentanchor = center
-									position = { 30 0 }
-									size = { 30 30 }
-									texture = "gfx/interface/colors/white.dds"
-									using = Color_Red
-									mirror = horizontal
-
-
-									modify_texture = {
-										name = "mask_1"
-										texture = "gfx/interface/component_masks/mask_glow.dds"
-										blend_mode = alphamultiply
-										rotate_uv = 1
-									}
-
-									modify_texture = {
-										name = "mask_2"
-										texture = "gfx/interface/component_masks/mask_glow.dds"
-										blend_mode = alphamultiply
-										rotate_uv = -1
-									}
-
-									modify_texture = {
-										name = "mask_3"
-										texture = "gfx/interface/component_masks/mask_clouds.dds"
-										blend_mode = alphamultiply
-										alpha = 0.1
-									}
-
-									modify_texture = {
-										name = "mask_4"
-										texture = "gfx/interface/component_masks/mask_circle.dds"
-										blend_mode = mask
-									}
-
-									modify_texture = {
-										name = "mask_3"
-										texture = "gfx/interface/colors/gold.dds"
-										blend_mode = add
-									}
-
-									state = {
-										name = "stress_level_increase"
-										next = b
-
-										using = Animation_Curve_Default
-										scale = 1
-										alpha = 0
-									}
-
-									state = {
-										name = b
-										next = c
-
-										duration = 0.6
-										bezier = { 0.5 0 1 0.5 }
-
-										scale = 5
-										alpha = 0.7
-									}
-
-									state = {
-										name = c
-										duration = 0.3
-										alpha = 0
-										scale = 6
-									}
-
-									state = {
-										name = rotate_a
-										next = rotate_b
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_1"
-											rotate_uv = 1
-										}
-									}
-
-									state = {
-										name = rotate_a
-										next = rotate_b
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_1"
-											rotate_uv = 180
-										}
-									}
-
-									state = {
-										name = rotate_a_2
-										next = rotate_b_2
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_2"
-											rotate_uv = -1
-										}
-									}
-
-									state = {
-										name = rotate_a_2
-										next = rotate_b_2
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_2"
-											rotate_uv = -180
-										}
-									}
-
-									state = {
-										name = rotate_a_3
-										next = rotate_b_3
-										trigger_on_create = yes
-
-										modify_texture = {
-											name = "mask_3"
-											rotate_uv = 0
-											alpha = 0.1
-										}
-									}
-
-									state = {
-										name = rotate_a_3
-										next = rotate_b_3
-
-										duration = 1
-
-										modify_texture = {
-											name = "mask_3"
-											rotate_uv = 40
-											alpha = 0.8
-										}
-									}
-								}
-
-								icon = {
-									size = { 100% 100% }
-									texture = "gfx/interface/skinned/hud_stress_bg.dds"
-									mirror = horizontal
-
-									icon = {
-										parentanchor = vcenter
-										position = { 105 0 }
-										size = { 35 35 }
-
-										texture = "gfx/interface/icons/stress/icon_stress_level.dds"
-										framesize = { 70 70 }
-										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_value') ) )]"
-										mirror = horizontal
-
-										modify_texture = {
-											visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
-											name = "lvl3_glow"
-											texture = "gfx/interface/colors/gold.dds"
-											blend_mode = colordodge
-											alpha = 0
-										}
-
-										modify_texture = {
-											name = "lvl_increase"
-											texture = "gfx/interface/colors/gold.dds"
-											blend_mode = colordodge
-											alpha = 0
-										}
-
-										state = {
-											name = a
-											next = b
-											duration = 0.6
-											trigger_on_create = yes
-											using = Animation_Curve_Default
-
-											modify_texture = {
-												name = "lvl3_glow"
-												alpha = 0.3
-											}
-										}
-
-										state = {
-											name = b
-											next = a
-											duration = 1.5
-											using = Animation_Curve_Default
-
-											modify_texture = {
-												name = "lvl3_glow"
-												alpha = 0
-											}
-										}
-
-										state = {
-											name = "stress_level_increase"
-											next = "stress_level_increase_2"
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0
-											}
-										}
-
-										state = {
-											name = "stress_level_increase_2"
-											next = "stress_level_increase_3"
-											duration = 0.4
-											bezier = { 0.5 0 1 0.5 }
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0.7
-											}
-										}
-
-										state = {
-											name = "stress_level_increase_3"
-											duration = 0.5
-											bezier = { 0 0.5 0.5 1 }
-
-											modify_texture = {
-												name = "lvl_increase"
-												alpha = 0
-											}
-										}
-									}
-								}
-							}
+					block "wc_first_single_magic_infusion_widget_block"
+					{
+						wc_single_magic_infusion_widget = {
+						}
+					}
+					block "wc_second_single_magic_infusion_widget_block"
+					{
+						wc_single_magic_infusion_widget = {
 						}
 					}
 				}
@@ -948,7 +131,511 @@ types WCMagicInfusion {
 		}
 	}
 
+	type wc_single_magic_infusion_widget = widget {
+		block "wc_widget_is_visible_magic_infusion_block"
+		{
+			visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+		}
+		size = { 360 125 }
+
+		widget = {
+			parentanchor = center
+			size = { 360 216 }
+
+			widget = {
+				parentanchor = center
+				widgetanchor = right|vcenter
+				position = { 59 0 }
+				size = { 120 56 }
+
+				background = {
+					texture = "gfx/interface/colors/white.dds"
+					color = { 0.1 0.1 0.1 0.8 }
+				}
+
+				icon = {
+					block "wc_greaterthanorequalto_2_magic_infusion_level_block"
+					{
+						visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+					}
+					size = { 100% 100% }
+					texture = "gfx/interface/colors/white.dds" # Color controlled by the block below
+					block "wc_magic_infusion_level_2_empty_progressbar_flick_color_block"
+					{
+						color = { 1 0.1 0.1 0.2 }
+					}
+
+					using = Animation_ShowHide_Standard
+
+					state = {
+						name = a
+						next = b
+						trigger_on_create = yes
+
+						using = Animation_Curve_Default
+						duration = 0.8
+						alpha = 0
+					}
+
+					state = {
+						name = b
+						next = a
+
+						using = Animation_Curve_Default
+						duration = 1.5
+						alpha = 1
+					}
+				}
+
+				hbox = {
+					widget = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						block "wc_getprogressbarvaluemaxscaled_block"
+						{
+							layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+						}
+
+						block "wc_magic_infusion_progressbar_level_3_block"
+						{
+							wc_magic_infusion_progressbar = {
+								visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+							
+								blockoverride "bar_color"
+								{
+									texture = "gfx/interface/colors/red.dds"
+								}
+								blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+								{
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+								}
+								blockoverride "wc_progressbar_glow_texture_block"
+								{
+									texture = "gfx/interface/colors/gold.dds"
+								}
+								blockoverride "wc_progressbar_flash_texture_block"
+								{
+									texture = "gfx/interface/colors/white.dds"
+								}
+								blockoverride "bar_color_flow"
+								{
+									texture = "gfx/interface/colors/gold.dds"
+									alpha = 0.7
+								}
+							}
+						}
+
+						block "wc_magic_infusion_progressbar_level_2_block"
+						{
+							wc_magic_infusion_progressbar = {
+								visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+							
+								blockoverride "bar_color"
+								{
+									texture = "gfx/interface/colors/orange.dds"
+								}
+								blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+								{
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+								}
+								blockoverride "wc_progressbar_glow_texture_block"
+								{
+									texture = "gfx/interface/colors/gold.dds"
+								}
+								blockoverride "wc_progressbar_flash_texture_block"
+								{
+									texture = "gfx/interface/colors/white.dds"
+								}
+								blockoverride "bar_color_flow"
+								{
+									texture = "gfx/interface/colors/white.dds"
+									alpha = 0.3
+								}
+							}
+						}
+
+						block "wc_magic_infusion_progressbar_level_1_block"
+						{
+							wc_magic_infusion_progressbar = {
+								visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)1')]"
+							
+								blockoverride "bar_color"
+								{
+									texture = "gfx/interface/colors/gold_darker.dds"
+								}
+								blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+								{
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+								}
+								blockoverride "wc_progressbar_flash_texture_block"
+								{
+									texture = "gfx/interface/colors/white.dds"
+								}
+								blockoverride "bar_color_flow"
+								{
+									texture = "gfx/interface/colors/white.dds"
+									alpha = 0.3
+								}
+							}
+						}
+
+						block "wc_magic_infusion_progressbar_level_0_block"
+						{
+							wc_magic_infusion_progressbar = {
+								visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
+
+								blockoverride "bar_color"
+								{
+									texture = "gfx/interface/colors/blue.dds"
+								}
+								blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+								{
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+								}
+								blockoverride "wc_progressbar_flash_texture_block"
+								{
+									texture = "gfx/interface/colors/white.dds"
+								}
+								blockoverride "bar_color_flow"
+								{
+									texture = "gfx/interface/colors/white.dds"
+									alpha = 0.3
+								}
+							}
+						}
+					}
+
+					widget = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						block "wc_getprogressbarvaluemaxotherscaled_block"
+						{
+							layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+						}
+					}
+				}
+			}
+
+			widget = {
+				size = { 100% 100% }
+
+				progressbar_hud_stress_glow = {
+					block "wc_greaterthanorequalto_3_magic_infusion_level_block"
+					{
+						visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+					}
+					block "wc_magic_infusion_bg_glow_block"
+					{
+						texture = "gfx/wc_magic_infusion_gfx/wc_magic_infusion_bg_glow_red.dds"
+					}
+
+					blockoverride "animation_trigger_1" {
+						name = "lvl3_fire"
+						trigger_on_create = yes
+					}
+
+					blockoverride "animation_trigger_2" {}
+					blockoverride "lvl_3" {}
+				}
+
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/wc_magic_infusion_gfx/wc_magic_infusion_bg.dds"
+
+					icon = { # Left
+						parentanchor = vcenter
+						position = { 42 0 }
+						size = { 70 70 }
+
+						block "wc_left_icon_frame_block"
+						{
+							texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+							framesize = { 70 70 }
+							frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+						}
+
+						modify_texture = {
+							block "wc_greaterthanorequalto_2_magic_infusion_level_block"
+							{
+								visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+							}
+							name = "lvl3_glow"
+							block "wc_level_icon_glow_color_block"
+							{
+								texture = "gfx/interface/colors/gold.dds"
+							}
+							blend_mode = colordodge
+							alpha = 0
+						}
+					
+						modify_texture = {
+							name = "lvl_increase"
+							block "wc_level_icon_glow_color_block"
+							{
+								texture = "gfx/interface/colors/gold.dds"
+							}
+							blend_mode = colordodge
+							alpha = 0
+						}
+					
+						state = {
+							name = a
+							next = b
+							duration = 0.6
+							trigger_on_create = yes
+							using = Animation_Curve_Default
+					
+							modify_texture = {
+								name = "lvl3_glow"
+								alpha = 0.3
+							}
+						}
+					
+						state = {
+							name = b
+							next = a
+							duration = 1.5
+							using = Animation_Curve_Default
+					
+							modify_texture = {
+								name = "lvl3_glow"
+								alpha = 0
+							}
+						}
+					}
+					icon = { # Right - level icon
+						block "wc_lessthan_level_3_magic_infusion_visible_block"
+						{
+							visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+						}
+						parentanchor = vcenter
+						position = { 245 0 }
+						size = { 70 70 }
+
+						block "wc_right_icon_frame_block"
+						{
+							texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+							framesize = { 70 70 }
+							frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_negative_light_shadow_infusion_level_icon_value') ) )]"
+						}
+
+						modify_texture = {
+							block "wc_next_magic_infusion_level_greaterthanorequalto_2_block"
+							{
+								visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_next_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+							}
+							name = "lvl3_glow"
+							block "wc_level_icon_glow_color_block"
+							{
+								texture = "gfx/interface/colors/gold.dds"
+							}
+							blend_mode = colordodge
+							alpha = 0
+						}
+					
+						modify_texture = {
+							name = "lvl_increase"
+							block "wc_level_icon_glow_color_block"
+							{
+								texture = "gfx/interface/colors/gold.dds"
+							}
+							blend_mode = colordodge
+							alpha = 0
+						}
+					
+						state = {
+							name = a
+							next = b
+							duration = 0.6
+							trigger_on_create = yes
+							using = Animation_Curve_Default
+					
+							modify_texture = {
+								name = "lvl3_glow"
+								alpha = 0.3
+							}
+						}
+					
+						state = {
+							name = b
+							next = a
+							duration = 1.5
+							using = Animation_Curve_Default
+					
+							modify_texture = {
+								name = "lvl3_glow"
+								alpha = 0
+							}
+						}
+					}
+					icon = { # Right Glow
+						block "wc_greaterthanorequalto_3_magic_infusion_level_block"
+						{
+							visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+						}
+						parentanchor = center
+						position = { 100 0 }
+						size = { 30 30 }
+						texture = "gfx/interface/colors/white.dds"
+						block "wc_right_icon_glow_color_block"
+						{
+							color = { 1 0.4 0.35 1 }
+						}
+
+
+						modify_texture = {
+							name = "mask_1"
+							texture = "gfx/interface/component_masks/mask_glow.dds"
+							blend_mode = alphamultiply
+							rotate_uv = 1
+						}
+
+						modify_texture = {
+							name = "mask_2"
+							texture = "gfx/interface/component_masks/mask_glow.dds"
+							blend_mode = alphamultiply
+							rotate_uv = -1
+						}
+
+						modify_texture = {
+							name = "mask_3"
+							texture = "gfx/interface/component_masks/mask_clouds.dds"
+							blend_mode = alphamultiply
+							alpha = 0.1
+						}
+
+						modify_texture = {
+							name = "mask_4"
+							texture = "gfx/interface/component_masks/mask_circle.dds"
+							blend_mode = mask
+						}
+
+						modify_texture = {
+							name = "mask_3"
+							texture = "gfx/interface/colors/gold.dds"
+							blend_mode = add
+						}
+
+						state = {
+							name = a
+							next = b
+
+							trigger_on_create = yes
+							using = Animation_Curve_Default
+							scale = 1
+							alpha = 0
+						}
+
+						state = {
+							name = b
+							next = c
+
+							duration = 1.2
+							bezier = { 0.5 0 1 0.5 }
+
+							scale = 5
+							alpha = 0.7
+						}
+
+						state = {
+							name = c
+							next = a
+							duration = 0.6
+							alpha = 0
+							scale = 6
+						}
+
+						state = {
+							name = rotate_a
+							next = rotate_b
+							trigger_on_create = yes
+
+							modify_texture = {
+								name = "mask_1"
+								rotate_uv = 1
+							}
+						}
+
+						state = {
+							name = rotate_a
+							next = rotate_b
+
+							duration = 1
+
+							modify_texture = {
+								name = "mask_1"
+								rotate_uv = 180
+							}
+						}
+
+						state = {
+							name = rotate_a_2
+							next = rotate_b_2
+							trigger_on_create = yes
+
+							modify_texture = {
+								name = "mask_2"
+								rotate_uv = -1
+							}
+						}
+
+						state = {
+							name = rotate_a_2
+							next = rotate_b_2
+
+							duration = 1
+
+							modify_texture = {
+								name = "mask_2"
+								rotate_uv = -180
+							}
+						}
+
+						state = {
+							name = rotate_a_3
+							next = rotate_b_3
+							trigger_on_create = yes
+
+							modify_texture = {
+								name = "mask_3"
+								rotate_uv = 0
+								alpha = 0.1
+							}
+						}
+
+						state = {
+							name = rotate_a_3
+							next = rotate_b_3
+
+							duration = 1
+
+							modify_texture = {
+								name = "mask_3"
+								rotate_uv = 40
+								alpha = 0.8
+							}
+						}
+					}
+					icon = { # Right - being icon
+						block "wc_greaterthanorequalto_3_magic_infusion_level_block"
+						{
+							visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+						}
+						parentanchor = vcenter
+						position = { 245 0 }
+						size = { 70 70 }
+
+						texture = "gfx/interface/icons/traits/being_void.dds"
+					}
+				}
+			}
+		}
+	}
+
 	type wc_magic_infusion_progressbar = icon {
+		size = { 100% 100% }
+
+		using = Animation_ShowHide_Standard
 		shaderfile = "gfx/FX/pdxgui_repeat_texture.shader"
 		alpha = 0.8
 
@@ -981,15 +668,24 @@ types WCMagicInfusion {
 
 		modify_texture = {
 			name = "flash"
-			texture = "gfx/interface/colors/white.dds"
+			block "wc_progressbar_flash_texture_block"
+			{
+				texture = "gfx/interface/colors/white.dds"
+			}
 			blend_mode = colordodge
 			alpha = 0
 		}
 
 		modify_texture = {
-			visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+			block "wc_greaterthanorequalto_2_magic_infusion_level_block"
+			{
+				visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+			}
 			name = "lvl3_glow"
-			texture = "gfx/interface/colors/gold.dds"
+			block "wc_progressbar_glow_texture_block"
+			{
+				texture = "gfx/interface/colors/gold.dds"
+			}
 			blend_mode = colordodge
 			alpha = 0
 		}
@@ -1033,32 +729,6 @@ types WCMagicInfusion {
 			modify_texture = {
 				name = "lvl3_glow"
 				alpha = 0
-			}
-		}
-
-		state = {
-			name = "stress_level_increase"
-			next = "fade_out"
-
-			duration = 0.1
-			bezier = { 0.5 0 1 0.5 }
-
-			modify_texture = {
-				name = "flash"
-				alpha = 0.6
-			}
-		}
-
-		state = {
-			name = "stress_increase"
-			next = "fade_out"
-
-			duration = 0.1
-			bezier = { 0.5 0 1 0.5 }
-
-			modify_texture = {
-				name = "flash"
-				alpha = 0.6
 			}
 		}
 

@@ -1,0 +1,24 @@
+﻿wc_change_light_shadow_infusion_by_VALUE_effect = {
+	first = wc_change_light_shadow_infusion_by_value_effect_first
+	first_neg = wc_change_light_shadow_infusion_by_value_effect_first_neg
+}
+
+wc_change_disorder_order_infusion_by_VALUE_effect = {
+	first = wc_change_disorder_order_infusion_by_value_effect_first
+	first_neg = wc_change_disorder_order_infusion_by_value_effect_first_neg
+}
+
+wc_change_life_death_infusion_by_VALUE_effect = {
+	first = wc_change_life_death_infusion_by_value_effect_first
+	first_neg = wc_change_life_death_infusion_by_value_effect_first_neg
+}
+
+wc_change_fire_water_infusion_by_VALUE_effect = {
+	first = wc_change_fire_water_infusion_by_value_effect_first
+	first_neg = wc_change_fire_water_infusion_by_value_effect_first_neg
+}
+
+wc_change_air_earth_infusion_by_VALUE_effect = {
+	first = wc_change_air_earth_infusion_by_value_effect_first
+	first_neg = wc_change_air_earth_infusion_by_value_effect_first_neg
+}

@@ -1313,34 +1313,420 @@ window = {
 						#margin_bottom = 3
 						datacontext = "[CharacterWindow.GetCharacter.MakeScope]"
 
-						hbox = {
+						hbox = { # Shadow-Light
 							icon = {
-								#visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
-								size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds"
+								visible = "[And( LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0'), EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)4') )]"
+								size = { 30 30 }
+								texture = "gfx/interface/icons/traits/being_void.dds"
+							}
+							icon = {
+								visible = "[And( GreaterThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0'), EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)4') )]"
+								size = { 30 30 }
+								texture = "gfx/interface/icons/traits/being_light.dds"
+							}
+							icon = {
+								visible = "[And( NotEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0'), NotEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)4') )]"
+								size = { 30 30 }
+								texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+								framesize = { 70 70 }
+								frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+							}
+							icon = {
+								visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+								size = { 30 30 }
+								texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+								framesize = { 70 70 }
+								frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+								color = { 0.7 0.7 0.7 0.7 }
 							}
 							tooltipwidget = {
-								widget_wc_magic_infusion_tooltip = {
-									blockoverride "wc_zero_magic_infusion_visible_block" {
+								widget_wc_magic_infusion_tooltipwidget = {
+									# Fake widget
+									blockoverride "wc_equalto_0_magic_infusion_visible_block" {
 										visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+									}
+									blockoverride "wc_previous_magic_infusion_level_to_frame_block" {
+										texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+										framesize = { 70 70 }
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_negative_light_shadow_infusion_level_icon_value') ) )]"
+									}
+									blockoverride "wc_current_magic_infusion_level_to_frame_block"
+									{
+										texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+										framesize = { 70 70 }
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+									}
+									blockoverride "wc_next_magic_infusion_level_to_frame_block"
+									{
+										texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+										framesize = { 70 70 }
+										frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_positive_light_shadow_infusion_level_icon_value') ) )]"
+									}
+
+									blockoverride "wc_first_single_magic_infusion_widget_block" # Shadow
+									{
+										wc_single_magic_infusion_widget = {
+											blockoverride "wc_widget_is_visible_magic_infusion_block"
+											{
+												visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+											}
+
+											blockoverride "wc_magic_infusion_progressbar_level_0_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
+									
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/grey.dds" # original - blue
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_1_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)1')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_dark_blue_magenta.dds" # original - gold_darker
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_2_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_purple_smyrna.dds" # original - orange
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_glow_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_3_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_purple_royal.dds" # original - red
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_glow_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+														alpha = 0.7
+													}
+												}
+											}
+
+											blockoverride "wc_magic_infusion_level_2_empty_progressbar_flick_color_block"
+											{
+												color = { 0.3 0.1 0.8 0.1 } # Purple
+											}
+											blockoverride "wc_level_icon_glow_color_block"
+											{
+												texture = "gfx/interface/colors/wc_amethyst.dds"
+											}
+											blockoverride "wc_magic_infusion_bg_glow_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_magic_infusion_bg_glow_purple.dds"
+											}
+											blockoverride "wc_right_icon_glow_color_block"
+											{
+												color = { 0.4 0.3 0.8 1 } # Purple
+											}
+
+											blockoverride "wc_left_icon_frame_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+												framesize = { 70 70 }
+												frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+											}
+											blockoverride "wc_right_icon_frame_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+												framesize = { 70 70 }
+												frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_negative_light_shadow_infusion_level_icon_value') ) )]"
+											}
+
+											blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+											}
+											blockoverride "wc_greaterthanorequalto_3_magic_infusion_level_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+											}
+									
+											blockoverride "wc_lessthan_level_3_magic_infusion_visible_block"
+											{
+												visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+											}
+									
+									
+											blockoverride "wc_next_magic_infusion_level_greaterthanorequalto_2_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_next_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+											}
+											# Progressbar
+											blockoverride "wc_getprogressbarvaluemaxscaled_block"
+											{
+												layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+											}
+											blockoverride "wc_getprogressbarvaluemaxotherscaled_block"
+											{
+												layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+											}
+										}
+									}
+
+									blockoverride "wc_second_single_magic_infusion_widget_block" # Light
+									{
+										wc_single_magic_infusion_widget = {
+											blockoverride "wc_widget_is_visible_magic_infusion_block"
+											{
+												visible = "[GreaterThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_value'), '(CFixedPoint)0')]"
+											}
+
+											blockoverride "wc_magic_infusion_progressbar_level_0_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)0')]"
+									
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/grey.dds" # original - blue
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_1_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)1')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_dark_blue_magenta.dds" # original - gold_darker
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_2_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[EqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_purple_smyrna.dds" # original - orange
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_glow_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+														alpha = 0.3
+													}
+												}
+											}
+											blockoverride "wc_magic_infusion_progressbar_level_3_block"
+											{
+												wc_magic_infusion_progressbar = {
+													visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+												
+													blockoverride "bar_color"
+													{
+														texture = "gfx/interface/colors/wc_purple_royal.dds" # original - red
+													}
+													blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+													{
+														visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+													}
+													blockoverride "wc_progressbar_glow_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+													}
+													blockoverride "wc_progressbar_flash_texture_block"
+													{
+														texture = "gfx/interface/colors/wc_lilac.dds" # original - white
+													}
+													blockoverride "bar_color_flow"
+													{
+														texture = "gfx/interface/colors/wc_amethyst.dds" # original - gold
+														alpha = 0.7
+													}
+												}
+											}
+
+											blockoverride "wc_magic_infusion_level_2_empty_progressbar_flick_color_block"
+											{
+												color = { 0.3 0.1 0.8 0.1 } # Purple
+											}
+											blockoverride "wc_level_icon_glow_color_block"
+											{
+												texture = "gfx/interface/colors/wc_amethyst.dds"
+											}
+											blockoverride "wc_magic_infusion_bg_glow_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_magic_infusion_bg_glow_purple.dds"
+											}
+											blockoverride "wc_right_icon_glow_color_block"
+											{
+												color = { 0.4 0.3 0.8 1 } # Purple
+											}
+
+											blockoverride "wc_left_icon_frame_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+												framesize = { 70 70 }
+												frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_current_light_shadow_infusion_level_icon_value') ) )]"
+											}
+											blockoverride "wc_right_icon_frame_block"
+											{
+												texture = "gfx/wc_magic_infusion_gfx/wc_light_shadow_level_icons.dds"
+												framesize = { 70 70 }
+												frame = "[IntToFrameIndex( FixedPointToInt( Scope.ScriptValue('wc_negative_light_shadow_infusion_level_icon_value') ) )]"
+											}
+
+											blockoverride "wc_greaterthanorequalto_2_magic_infusion_level_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+											}
+											blockoverride "wc_greaterthanorequalto_3_magic_infusion_level_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+											}
+									
+											blockoverride "wc_lessthan_level_3_magic_infusion_visible_block"
+											{
+												visible = "[LessThan_CFixedPoint(Scope.ScriptValue('wc_current_light_shadow_infusion_level_value'), '(CFixedPoint)3')]"
+											}
+									
+									
+											blockoverride "wc_next_magic_infusion_level_greaterthanorequalto_2_block"
+											{
+												visible = "[GreaterThanOrEqualTo_CFixedPoint(Scope.ScriptValue('wc_next_light_shadow_infusion_level_value'), '(CFixedPoint)2')]"
+											}
+											# Progressbar
+											blockoverride "wc_getprogressbarvaluemaxscaled_block"
+											{
+												layoutstretchfactor_horizontal = "[GetProgressBarValueMaxScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+											}
+											blockoverride "wc_getprogressbarvaluemaxotherscaled_block"
+											{
+												layoutstretchfactor_horizontal = "[GetProgressBarValueMaxOtherScaled( FixedPointToFloat(Scope.ScriptValue('wc_layoutstretchfactor_light_shadow_infusion_value')), '(float)100', '(int32)60' )]"
+											}
+										}
 									}
 								}
 							}
 						}
 						hbox = {
 							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
-							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
 						}
 						hbox = {
 							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
-							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+							#tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
 						}
 						hbox = {
 							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
-							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+							#tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
 						}
 						hbox = {
 							icon = { size = { 30 30 } texture = "gfx/interface/icons/icon_dread.dds" }
-							tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
+							#tooltipwidget = { widget_wc_magic_infusion_tooltip = {  } }
 						}
 						divider_light = {
 							layoutpolicy_vertical = expanding

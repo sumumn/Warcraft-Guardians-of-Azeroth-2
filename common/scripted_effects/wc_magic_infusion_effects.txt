@@ -1,0 +1,22 @@
+﻿change_magic_AXIS_infusion_by_VALUE_effect = {
+	custom_description = {
+		text = wc_change_$AXIS$_infusion_by_VALUE_effect
+		value = $VALUE$
+
+		if = {
+			limit = { has_variable = wc_$AXIS$_infusion_variable }
+
+			change_variable = { name = wc_$AXIS$_infusion_variable add = $VALUE$ }
+			clamp_variable = { name = wc_$AXIS$_infusion_variable max = wc_max_magic_infusion_value min = wc_min_magic_infusion_value }
+		}
+		else = { set_variable = { name = wc_$AXIS$_infusion_variable value = $VALUE$ } }
+	}
+}
+
+#update_magic_infusion_level = {
+#	if = {
+#		limit = {
+#			var:wc_$AXIS$_infusion_variable > wc_level_1_pos_magic_infusion_threshold_value
+#		}
+#	}
+#}
