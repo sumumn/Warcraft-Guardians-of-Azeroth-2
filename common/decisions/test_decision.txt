@@ -8,7 +8,11 @@
 	is_valid = {
 	}
 	effect = {
-		usurp_all_titles_effect = { TARGET = title:e_lordaeron.holder }
+		change_magic_AXIS_infusion_by_VALUE_effect = { AXIS = light_shadow VALUE = 50 }
+		#change_magic_AXIS_infusion_by_VALUE_effect = { AXIS = disorder_order VALUE = 50 }
+		#change_magic_AXIS_infusion_by_VALUE_effect = { AXIS = life_death VALUE = 50 }
+		#change_magic_AXIS_infusion_by_VALUE_effect = { AXIS = fire_water VALUE = 50 }
+		#change_magic_AXIS_infusion_by_VALUE_effect = { AXIS = air_earth VALUE = 50 }
 	}
 
 	ai_check_interval = 0
