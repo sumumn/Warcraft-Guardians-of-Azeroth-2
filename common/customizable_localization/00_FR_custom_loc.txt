@@ -6122,6 +6122,20 @@ FR_du_Char = {
 					NOT = {
 						culture_group = culture_group:orc_group
 						culture_group = culture_group:tauren_group
+						culture_group = culture_group:elf_group
+						culture_group = culture_group:human_group
+						culture_group = culture_group:dwarf_group
+						culture_group = culture_group:troll_group
+						culture_group = culture_group:mogu_group
+						culture_group = culture_group:pandaren_group
+						culture_group = culture_group:dryad_group
+						culture_group = culture_group:dragon_group
+						culture_group = culture_group:vrykul_group
+						culture_group = culture_group:jinyu_group
+						culture_group = culture_group:goblin_group
+						culture_group = culture_group:aqir_group
+						culture_group = culture_group:ancient_group
+						culture_group = culture_group:demonic_group
 					}
 
 					# Warcraft
